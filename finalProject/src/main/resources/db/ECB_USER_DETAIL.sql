@@ -23,7 +23,8 @@
 --------------------------------------------------------
 
    CREATE SEQUENCE  "ECB_USER_DETAIL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE NOORDER  NOCYCLE ;
-
+INSERT INTO ECB_USER_DETAIL (ID,NAME,PHONE,EMAIL,ADDRESS1,ADDRESS2,CITY,STATE,ZIP,USER_ID) 
+VALUES (1,"Zihao","2023554567","luckzh94@gmail.com","5 Independency way","suite 140","Princeton","NJ","08540",1);
 --------------------------------------------------------
 --  DDL for Index ECB_USER_DETAIL_PK
 --------------------------------------------------------

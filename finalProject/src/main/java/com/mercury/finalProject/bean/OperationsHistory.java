@@ -2,6 +2,7 @@ package com.mercury.finalProject.bean;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,14 +17,14 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "ecb_operations_history")
+@Table(name = "ECB_OPERATIONS_HISTORY")
 public class OperationsHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "ECB_OPERATIONS_HISTORY_SEQ_GEN")
 	@SequenceGenerator(name = "ECB_OPERATIONS_HISTORY_SEQ_GEN", sequenceName = "ECB_OPERATIONS_HISTORY_SEQ",allocationSize = 1)
 	private int id;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "operations_id")
 	//@JsonIgnore
 	private Operations operations;
@@ -35,7 +36,7 @@ public class OperationsHistory {
 	@JsonFormat(pattern = "yyyy/mm/dd")
 	private Date operationDate;
 	
-	@Column
+	@Column(name = "price")
 	private int price;
 
 	public OperationsHistory(int id, Operations operations, int productId, Date operationDate, int price) {

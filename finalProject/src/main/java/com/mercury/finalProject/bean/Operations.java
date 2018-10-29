@@ -27,7 +27,11 @@ public class Operations {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	public Operations(Operations o) {
+		this.id = o.getId();
+		this.type = o.getType();
+		this.userId = o.getUserId();
+	}
 	public Operations(int id, String type, int userId) {
 		super();
 		this.id = id;

@@ -37,10 +37,12 @@ public class Product {
 	private String description;
 	
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "type_id")
-	@JsonIgnoreProperties("goods")
-	private ProductType productType;
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "type_id")
+//	@JsonIgnoreProperties("goods")
+//	private ProductType productType;
+	@Column(name = "type_id")
+	private int productTypeId;
 	
 	@Column
 	private int price;
@@ -48,16 +50,7 @@ public class Product {
 	@Column
 	@JsonFormat(pattern = "yyyy/mm/dd")
 	private Date deadline;
-	
-	@OneToMany(mappedBy = "product",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<ProductImage> productImages;
-
-	
-
-	public void setProductType(ProductType productType) {
-		this.productType = productType;
-	}
-
+		
 	public int getId() {
 		return id;
 	}
@@ -82,9 +75,6 @@ public class Product {
 		this.description = description;
 	}
 
-	public ProductType getProductType() {
-		return productType;
-	}
 
 	public int getPrice() {
 		return price;
@@ -109,24 +99,30 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int id, String title, String description, ProductType productType, int price, Date deadline,
-			List<ProductImage> productImages) {
+
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", productTypeId="
+				+ productTypeId + ", price=" + price + ", deadline=" + deadline + "]";
+	}
+
+	public int getProductTypeId() {
+		return productTypeId;
+	}
+
+	public void setProductTypeId(int productTypeId) {
+		this.productTypeId = productTypeId;
+	}
+
+	public Product(int id, String title, String description, int productTypeId, int price, Date deadline) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.productType = productType;
+		this.productTypeId = productTypeId;
 		this.price = price;
 		this.deadline = deadline;
-		this.productImages = productImages;
-	}
-
-	public List<ProductImage> getProductImages() {
-		return productImages;
-	}
-
-	public void setProductImages(List<ProductImage> productImages) {
-		this.productImages = productImages;
 	}
 
 	

@@ -44,6 +44,8 @@ public class User implements UserDetails {
 	private String password;
 	@Column
 	private Blob image;
+	@Column(name = "onlinestatus")
+	private int onlineStatus;
 	@Column
 	private int activated;
 	@Column

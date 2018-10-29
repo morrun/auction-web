@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,8 +25,9 @@ public class ProductType {
 	@Column
 	private String type;
 	
-	@OneToMany(mappedBy = "productType", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Product> goods;
+//	@OneToMany(mappedBy = "productType", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "product_id")
+//	private List<Product> goods;
 	public int getID() {
 		return ID;
 	}
@@ -47,29 +49,15 @@ public class ProductType {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	public List<Product> getGoods() {
-		return goods;
-	}
-
-	public void setGoods(List<Product> goods) {
-		this.goods = goods;
-	}
-
-	public ProductType(int iD, String type, List<Product> goods) {
+	public ProductType(int iD, String type) {
 		super();
 		ID = iD;
 		this.type = type;
-		this.goods = goods;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductType [ID=" + ID + ", type=" + type + ", goods=" + goods + "]";
+		return "ProductType [ID=" + ID + ", type=" + type + "]";
 	}
 
-
-	
-	
 }

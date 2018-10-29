@@ -18,4 +18,10 @@ public class UserServiceImple implements UserService {
 	public List<User> getAllUsers() {
 		return userDao.findAll();
 	}
+
+	@Override
+	public User getUserById(int id) {
+		// TODO Auto-generated method stub
+		return userDao.findById(id);
+	}
 }

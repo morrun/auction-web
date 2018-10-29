@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,6 +29,31 @@ public class OrderProduct {
 	@Column(name = "purchase_date")
 	@JsonFormat(pattern = "yyyy/mm/dd")
 	private Date purchaseDate;
+	
+	@Column
+	private int price;
+	public OrderProduct(int id, int userId, int productId, Date purchaseDate, int price) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.productId = productId;
+		this.purchaseDate = purchaseDate;
+		this.price = price;
+	}
+
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
 
 	public OrderProduct() {
 		super();
@@ -58,23 +80,9 @@ public class OrderProduct {
 		this.purchaseDate = purchaseDate;
 	}
 
-
-
-	public OrderProduct(int id, int userId, int productId, Date purchaseDate) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.productId = productId;
-		this.purchaseDate = purchaseDate;
-	}
-
-
-
 	public int getUserId() {
 		return userId;
 	}
-
-
 
 	public void setUserId(int userId) {
 		this.userId = userId;
@@ -97,7 +105,7 @@ public class OrderProduct {
 	@Override
 	public String toString() {
 		return "OrderProduct [id=" + id + ", userId=" + userId + ", productId=" + productId + ", purchaseDate="
-				+ purchaseDate + "]";
+				+ purchaseDate + ", price=" + price + "]";
 	}
 
 	

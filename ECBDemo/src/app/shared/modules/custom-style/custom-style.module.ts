@@ -7,7 +7,7 @@ import {
   MatCheckboxModule, MatDialogModule, MatExpansionModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatRadioModule, MatSelectModule,
+  MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,
   MatSidenavModule, MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -35,6 +35,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatExpansionModule,
     CdkTableModule,
     FlexLayoutModule,
+    MatMenuModule,
   ],
   exports: [
     MatButtonModule,
@@ -54,6 +55,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatExpansionModule,
     CdkTableModule,
     FlexLayoutModule,
+    MatMenuModule,
   ]
 })
 export class CustomStyleModule { }

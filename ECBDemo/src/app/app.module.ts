@@ -8,13 +8,17 @@ import { HeaderComponent } from './commons/header/header.component';
 import { RooterComponent } from './commons/rooter/rooter.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './products/products.component';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RooterComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <mat-icon>home</mat-icon>
+  <a class="navbar-brand">MORRUN e-commerce</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="nav-link" routerLink="/home">Home</a>
+  <div class="collapse navbar-collapse" id="navbarNav" [class.show]="show" (click)="toggleCollapse()">
+  </div>
+</mat-toolbar>

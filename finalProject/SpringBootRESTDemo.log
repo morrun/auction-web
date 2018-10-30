@@ -11801,3 +11801,7 @@ Caused by: org.hibernate.AnnotationException: No identifier specified for entity
 2018-10-29 17:27:10.633  INFO 14612 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
 2018-10-29 17:27:10.765  INFO 14612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2018-10-29 17:27:10.772  INFO 14612 --- [restartedMain] c.m.f.FinalProjectApplication            : Started FinalProjectApplication in 15.452 seconds (JVM running for 16.674)
+2018-10-29 17:27:25.949  INFO 14612 --- [http-nio-8080-exec-9] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-10-29 17:27:25.950  INFO 14612 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-10-29 17:27:25.997  INFO 14612 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 47 ms
+2018-10-29 17:27:26.213  INFO 14612 --- [http-nio-8080-exec-9] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory

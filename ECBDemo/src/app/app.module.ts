@@ -10,6 +10,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
+import { UserInfoComponent } from './users/user-info/user-info.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { UsernamePipePipe } from './shared/pipes/username-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -18,13 +24,20 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
     RooterComponent,
     HomeComponent,
     ProductsComponent,
-    DropdownDirective
+    DropdownDirective,
+    LoginComponent,
+    RegisterComponent,
+    UserInfoComponent,
+    UsernamePipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CustomStyleModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

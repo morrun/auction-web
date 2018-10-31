@@ -79,15 +79,21 @@
   <span>
     <a mat-button routerLink="/home">Home</a>
     <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/products">Auction Products</a>
-      <a mat-menu-item>Counteroffer Products</a>
+      <button mat-menu-item routerLink="/products">Auction Products</button>
+      <button mat-menu-item>Counteroffer Products</button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="menu">Products</button>
   </span>
 
   <span class="example-fill-remaining-space"></span>
-
-  <span>
-    <a mat-button routerLink="/login">Login</a>
+  <mat-menu #userProfile="matMenu">
+    <button mat-menu-item routerLink="/users/user-info">User Info</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+  <span [matMenuTriggerFor]="userProfile" mat-menu-item *ngIf="(authService.userSubject | async); else login">
+    {{(authService.userSubject | async).username|usernamePipe}}
   </span>
+  <ng-template #login>
+    <a mat-menu-item routerLink="/users/login">Login</a>
+  </ng-template>
 </mat-toolbar>

@@ -1,4 +1,5 @@
 import {UserDetail} from './user-detail';
+import {UserType} from './user-type';
 
 export class User {
   id?: number;
@@ -8,6 +9,7 @@ export class User {
   onlineStatus: number;
   activated: number;
   credits: number;
-  registeredDate: Date;
+  registeredDate?: Date;
+  authorities: UserType[];
   userDetail?: UserDetail;
 }

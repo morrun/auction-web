@@ -27,7 +27,10 @@ public class UserProfile implements GrantedAuthority {
 		this.id = id;
 		this.type = type;
 	}
-
+	public UserProfile(int id) {
+		super();
+		this.id = id;
+	}
 	public UserProfile() {
 		super();
 		// TODO Auto-generated constructor stub

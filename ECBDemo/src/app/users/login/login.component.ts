@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     this.as.login(value as User)
       .subscribe(res => {
         if (res.success) {
+          // console.log(res.user.authorities[0].type);
           this.router.navigate(['/products']);
         } else {
           this.err = true;

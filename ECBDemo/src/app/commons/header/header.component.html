@@ -1,77 +1,3 @@
-<!--<header>-->
-  <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-    <!--<a class="navbar-brand" href="#">MSI e-commerce</a>-->
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" (click)="toggleCollapse()">-->
-      <!--<span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-    <!--<div class="collapse navbar-collapse" id="navbarNav" [class.show]="show" (click)="toggleCollapse()">-->
-      <!--<ul class="navbar-nav">-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link" routerLink="/home">Home</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link" routerLink="/products">Products</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item" *ngIf="(authService.userSubject | async)">-->
-          <!--<a class="nav-link" routerLink="/orders">Orders</a>-->
-        <!--</li>-->
-      <!--</ul>-->
-      <!--<ul class="navbar-nav ml-auto">-->
-        <!--<li class="nav-item float-right">-->
-          <!--<a mat-icon-button routerLink="/shopping-cart" *ngIf="(authService.userSubject | async)">-->
-            <!--<mat-icon class="mat-icon material-icons" [matBadge]="shoppingCartService.itemCount" matBadgePosition="above after" matBadgeColor="accent">shopping_cart</mat-icon>-->
-          <!--</a>-->
-          <!--<span *ngIf="(authService.userSubject | async); else login">-->
-            <!--<a routerLink="/users/user-info" mat-icon-button>-->
-              <!--<mat-icon class="mat-icon material-icons">account_circle</mat-icon>-->
-            <!--</a>-->
-            <!--<a (click)="logout()" mat-icon-button>-->
-              <!--<mat-icon class="mat-icon material-icons">exit_to_app</mat-icon>-->
-            <!--</a>-->
-            <!--{{(authService.userSubject | async).username}}-->
-          <!--</span>-->
-          <!--<ng-template #login>-->
-            <!--<a class="nav-link" routerLink="/users/login">Login</a>-->
-          <!--</ng-template>-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</div>-->
-  <!--</nav>-->
-<!--</header>-->
-
-<!--<header>-->
-  <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-  <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-    <!--<mat-icon>home</mat-icon>-->
-    <!--<a class="navbar-brand">MORRUN e-commerce</a>-->
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-      <!--<span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-    <!--<ul class="navbar-nav mr-auto">-->
-
-      <!--<li class="nav-item active">-->
-        <!--<a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>-->
-      <!--</li>-->
-      <!--<li class="nav-item dropdown" appDropdown>-->
-        <!--<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-          <!--Prodcuts-->
-        <!--</a>-->
-        <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-          <!--<a class="dropdown-item" routerLink="/products">Products</a>-->
-          <!--<div class="dropdown-divider"></div>-->
-          <!--<a class="dropdown-item" routerLink="/auctionsProducts">Auction Products</a>-->
-          <!--<div class="dropdown-divider"></div>-->
-          <!--<a class="dropdown-item" routerLink="/CounterofferProducts">Counteroffer Products</a>-->
-        <!--</div>-->
-      <!--</li>-->
-    <!--</ul>-->
-    <!--<nav class="navbar navbar-light bg-light">-->
-    <!--<a class="navbar-brand" routerLink="/login">Login</a>-->
-  <!--</nav>-->
-  <!--</div>-->
-
-<!--</nav>-->
-<!--</header>-->
 <mat-toolbar color="bluegreen">
   <span>
     <a>iMORRUN e-commerce</a>
@@ -95,5 +21,7 @@
   </span>
   <ng-template #login>
     <a mat-menu-item routerLink="/users/login">Login</a>
+  </ng-template>
+  <ng-template *ngIf="(authService.userSubject | async)">
   </ng-template>
 </mat-toolbar>

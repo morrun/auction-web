@@ -10,7 +10,7 @@ import {catchError, map} from 'rxjs/internal/operators';
 export class AuthService {
   AUTH_API_URL = `${environment.API_URL}`;
   userSubject: Subject<User> = new BehaviorSubject<User>(null);
-
+  status: boolean;
   constructor(
     private http: HttpClient
   ) {
@@ -38,6 +38,7 @@ export class AuthService {
       );
   }
   register(user: User): Observable<{success: boolean}> {
+    console.log(user);
     return this.http.post<{success: boolean, user: User}>(`${this.AUTH_API_URL}/users`, user);
   }
   logout(): Observable<{success: boolean}> {
@@ -46,5 +47,7 @@ export class AuthService {
   private handleError(error: HttpErrorResponse) {
     return throwError(`${error.error}`);
   }
-  change 
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.AUTH_API_URL}/users`);
+  }
 }

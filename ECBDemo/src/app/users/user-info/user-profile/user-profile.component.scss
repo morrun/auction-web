@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-content: center;
+}
+
+.container > * {
+  width: 100%;
+}
+
+.container form {
+  margin-bottom: 20px;
+}
+
+.container form > * {
+  margin: 5px 0;
+}
+
+.container .mat-radio-button {
+  margin: 0 5px;
+}

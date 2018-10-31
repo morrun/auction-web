@@ -4,7 +4,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatBadgeModule,
   MatButtonModule, MatCardModule,
-  MatCheckboxModule, MatDialogModule, MatExpansionModule,
+  MatCheckboxModule, MatDialogModule, MatDrawer, MatExpansionModule,
   MatIconModule,
   MatInputModule,
   MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,

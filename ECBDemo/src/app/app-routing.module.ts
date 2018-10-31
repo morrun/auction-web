@@ -4,7 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {ProductsComponent} from './products/products.component';
 import {LoginComponent} from './users/login/login.component';
 import {RegisterComponent} from './users/register/register.component';
-import {UserInfoComponent} from './users/user-info/user-info.component';
+
 
 const routes: Routes = [
   {
@@ -25,17 +25,17 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent
-      },
-      {
-        path: 'user-info',
-        component: UserInfoComponent
-      },
-      {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'user-info',
+    loadChildren: '../app/users/user-info/user-info.module#UserInfoModule'
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   }
 ];
 

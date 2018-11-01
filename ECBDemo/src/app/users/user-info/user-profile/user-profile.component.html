@@ -1,40 +1,105 @@
 
 <div class="container">
-    <label>
-      Choose your header icon: <button mat-raised-button (click)="openBottomSheet()">Open file</button>
-    </label>
 
-    <form class="example-container" [formGroup]="options">
-      <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
-      <div>
-        <label>Float label: </label>
-        <mat-radio-group formControlName="floatLabel">
-          <mat-radio-button value="auto">Auto</mat-radio-button>
-          <mat-radio-button value="always">Always</mat-radio-button>
-          <mat-radio-button value="never">Never</mat-radio-button>
-        </mat-radio-group>
-      </div>
+  <form [formGroup]="info" (ngSubmit)="onSubmit()" class="container">
+    <!--<form class="container" [formGroup]="info" (ngSubmit)="onSubmit()">-->
+      <label>
+        Choose your header icon: <button mat-stroked-button (click)="openBottomSheet()">Open file</button>
+      </label>
+
+
+      <mat-form-field
+        [hideRequiredMarker]="false"
+        [floatLabel]="auto">
+         <input matInput placeholder="Please Input Your Name" id="uname" formControlName="uname" required>
+        <mat-error *ngIf="(info.get('uname').touched)&&info.get('uname').errors && info.get('uname').errors.required">
+          Your name can't be empty!
+        </mat-error>
+        <mat-error *ngIf="(info.get('uname').touched)&&info.get('uname').errors && info.get('uname').errors.minlength">
+          Please input a correct name!
+        </mat-error>
+        <mat-error *ngIf="(info.get('uname').touched)&&info.get('uname').errors && info.get('uname').errors.maxlength">
+          Please do not exceed 20 letters!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="false"
+        [floatLabel]="auto">
+        <input matInput placeholder="Please Input Your Phone Number" id="phone" formControlName="phone" required>
+        <mat-error *ngIf="(info.get('phone').touched)&&info.get('phone').errors && info.get('phone').errors.required">
+          Please input a You Phone Number!
+        </mat-error>
+        <mat-error *ngIf="(info.get('phone').touched)&&info.get('phone').errors && info.get('phone').errors.pattern">
+          Please input a valid Phone Number!
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field
+        [floatLabel]="auto">
+        <mat-label>Please Input Your Address1</mat-label>
+        <input matInput placeholder="Drive/Ave" formControlName="address1" id="address1">
+      </mat-form-field>
+      <mat-form-field
+        [floatLabel]="auto">
+        <mat-label>Please Input Your Address2</mat-label>
+        <input matInput placeholder="Suite/Apt" formControlName="address1" id="address1">
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="false"
+        [floatLabel]="auto">
+        <input matInput placeholder="Please Input Your City" id="city" formControlName="city" required>
+        <mat-error *ngIf="(info.get('city').touched)&&info.get('city').errors && info.get('city').errors.required">
+          Please Input City!
+        </mat-error>
+        <mat-error *ngIf="(info.get('city').touched)&&info.get('city').errors && (info.get('city').errors.minlength||info.get('city').errors.maxlength)">
+          Please Input a Valid City name!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="false"
+        [floatLabel]="auto">
+        <input matInput placeholder="Please Input Your State" id="state" formControlName="state" required>
+        <mat-error *ngIf="(info.get('state').touched)&&info.get('state').errors && info.get('state').errors.required">
+          Please Input State!
+        </mat-error>
+        <mat-error *ngIf="(info.get('state').touched)&&info.get('state').errors && (info.get('state').errors.minlength||info.get('state').errors.maxlength)">
+          Please Input a Valid State Name!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        [hideRequiredMarker]="false"
+        [floatLabel]="auto">
+        <input matInput placeholder="Please Input Your Zip Code" id="zip" formControlName="zip" required>
+        <mat-error *ngIf="(info.get('zip').touched)&&info.get('zip').errors && info.get('zip').errors.required">
+          Please Input Zip Code!
+        </mat-error>
+        <mat-error *ngIf="(info.get('zip').touched)&&info.get('zip').errors && (info.get('zip').errors.pattern)">
+          Please Input a Valid Zip Code!
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Accent</button>
+      <!--<mat-form-field-->
+        <!--[hideRequiredMarker]="options.value.hideRequired"-->
+        <!--[floatLabel]="options.value.floatLabel">-->
+        <!--<mat-select required>-->
+          <!--<mat-option>&#45;&#45; None &#45;&#45;</mat-option>-->
+          <!--<mat-option value="option">Option</mat-option>-->
+        <!--</mat-select>-->
+        <!--<mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>-->
+      <!--</mat-form-field>-->
+
+      <!--<mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>-->
+      <!--<div>-->
+        <!--<label>Float label: </label>-->
+        <!--<mat-radio-group formControlName="floatLabel">-->
+          <!--<mat-radio-button value="auto">Auto</mat-radio-button>-->
+          <!--<mat-radio-button value="always">Always</mat-radio-button>-->
+          <!--<mat-radio-button value="never">Never</mat-radio-button>-->
+        <!--</mat-radio-group>-->
+      <!--</div>-->
     </form>
 
-    <mat-form-field
-      [hideRequiredMarker]="options.value.hideRequired"
-      [floatLabel]="options.value.floatLabel">
-      <input matInput placeholder="Simple placeholder" required>
-    </mat-form-field>
 
-    <mat-form-field [floatLabel]="options.value.floatLabel">
-      <mat-label>Both a label and a placeholder</mat-label>
-      <input matInput placeholder="Simple placeholder">
-    </mat-form-field>
-
-    <mat-form-field
-      [hideRequiredMarker]="options.value.hideRequired"
-      [floatLabel]="options.value.floatLabel">
-      <mat-select required>
-        <mat-option>-- None --</mat-option>
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-      <mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>
-    </mat-form-field>
   </div>
 

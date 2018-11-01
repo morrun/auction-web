@@ -26,13 +26,13 @@ public class UserServiceImple implements UserService {
 	
 	@Autowired
 	PasswordEncoder pe;
+	@Override
 	public List<User> getAllUsers() {
 		return userDao.findAll();
 	}
 
 	@Override
 	public User getUserById(int id) {
-		// TODO Auto-generated method stub
 		return userDao.findById(id);
 	}
 
@@ -77,6 +77,27 @@ public class UserServiceImple implements UserService {
 			return new Response(false, "User is not found!");
 		}
 	}
-	
+
+	@Override
+	public Response updateUser(User user, Authentication authentication) {
+		if(user.getUsername().equals(authentication.getName())) {
+			User u = userDao.findByUsername(user.getUsername());
+			u.setImage(user.getImage());
+			u.getUserDetail().setAddress1(user.getUserDetail().getAddress1());
+			u.getUserDetail().setAddress2(user.getUserDetail().getAddress2());
+			u.getUserDetail().setName(user.getUserDetail().getName());
+			u.getUserDetail().setPhone(user.getUserDetail().getPhone());
+			u.getUserDetail().setCity(user.getUserDetail().getCity());
+			u.getUserDetail().setEmail(user.getUsername());
+			u.getUserDetail().setState(user.getUserDetail().getState());
+			u.getUserDetail().setZip(user.getUserDetail().getZip());
+			userDao.save(u);
+		}else {
+			//TODO: Not authorize to update password if not current loggedin user or admin.
+			return new Response(false);
+		}
+		return new Response(true);
+	}
+
 	
 }

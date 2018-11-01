@@ -18,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mercury.finalProject.bean.User;
 import com.mercury.finalProject.http.Response;
 import com.mercury.finalProject.service.UserService;
+import com.mercury.finalProject.serviceImpl.UserServiceImple;
 
 @RestController
 public class UserController {
 	@Autowired
-	private UserService userService;
+	private UserServiceImple userService;
 	
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("/users")	
@@ -39,7 +40,11 @@ public class UserController {
 	public Response addUser(@Valid @RequestBody User user) {
 		return userService.register(user);
 	}
-	
+	@PutMapping("/users/{id}")
+	public Response updateUser(@Valid @RequestBody User user, Authentication authentication) {
+		System.out.println("I am in controller");
+		return userService.updateUser(user, authentication);
+	}
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
 	@PutMapping
 	public Response changeUser(@RequestBody User user, Authentication authentication) {

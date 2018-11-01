@@ -13,4 +13,5 @@ public interface UserService {
 	public Response register(User user);
 	public Response changePassword(User user, Authentication authentication);
 	public Response deleteUser(int id);
+	public Response updateUser(User user, Authentication authentication);
 }

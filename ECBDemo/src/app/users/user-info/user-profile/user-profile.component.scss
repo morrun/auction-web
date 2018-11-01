@@ -1,8 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 40%;
   align-content: center;
+  margin-right: 5%;
+  background-color: lightgray;
 }
 
 .container > * {
@@ -19,4 +21,7 @@
 
 .container .mat-radio-button {
   margin: 0 5px;
+}
+.container .mat-raised-button {
+  width: 20%;
 }

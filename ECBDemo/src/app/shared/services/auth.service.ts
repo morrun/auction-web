@@ -50,4 +50,7 @@ export class AuthService {
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.AUTH_API_URL}/users`);
   }
+  updateUsers(user: User): Observable<{success: boolean}>{
+    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/users/${user.id}`,user,{withCredentials:true});
+  }
 }

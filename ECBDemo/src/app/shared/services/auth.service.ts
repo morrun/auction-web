@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable, Subject, throwError} from 'rxjs';
 import {User} from '../models/user';
 import {catchError, map} from 'rxjs/internal/operators';
+import {UserDetail} from '../models/user-detail';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,7 @@ export class AuthService {
     private http: HttpClient
   ) {
     this.checkLogin();
+
   }
 
   checkLogin() {
@@ -50,7 +52,10 @@ export class AuthService {
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.AUTH_API_URL}/users`);
   }
-  updateUsers(user: User): Observable<{success: boolean}>{
-    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/users/${user.id}`,user,{withCredentials:true});
+  updateUserDetail(userDetails: UserDetail): Observable<{success: boolean}>{
+    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/userDetails`, userDetails);
+  }
+  getUserDetail(id: number): Observable<UserDetail> {
+    return this.http.get<UserDetail>(`${this.AUTH_API_URL}/userDetails/${id}`);
   }
 }

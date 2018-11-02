@@ -8,4 +8,6 @@ export class UserDetail {
   city:string;
   state: string;
   zip: string;
+  userId?: number
+  image?: string;
 }

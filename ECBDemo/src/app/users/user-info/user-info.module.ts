@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {UserInfoComponent} from './user-info.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+
 import {
   MatBottomSheetModule,
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatCheckboxModule,
   MatDividerModule, MatFormFieldModule,
   MatGridListModule, MatIconModule, MatInputModule, MatListModule,
@@ -15,6 +16,8 @@ import {
 } from '@angular/material';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import { UpLoadImageComponent } from './user-profile/up-load-image/up-load-image.component';
+import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
+
 
 const routes: Routes = [
   {
@@ -24,6 +27,10 @@ const routes: Routes = [
       {
         path: 'user-profile',
         component: UserProfileComponent
+      },
+      {
+        path: 'modify-profile',
+        component: ModifyProfileComponent
       }
     ]
   }
@@ -44,9 +51,10 @@ const routes: Routes = [
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatCardModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserProfileComponent, UserInfoComponent,UpLoadImageComponent],
+  declarations: [UserProfileComponent, UserInfoComponent,UpLoadImageComponent, ModifyProfileComponent],
   entryComponents: [UpLoadImageComponent]
 })
 export class UserInfoModule { }

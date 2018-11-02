@@ -7,7 +7,7 @@ import org.springframework.security.core.Authentication;
 import com.mercury.finalProject.bean.User;
 import com.mercury.finalProject.http.Response;
 
-public interface UserService {
+public interface UserServicee {
 	public List<User> getAllUsers();
 	public User getUserById(int id);
 	public Response register(User user);

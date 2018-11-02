@@ -36,16 +36,17 @@ public class UserDetail {
 	private String state;
 	@Column
 	private String zip;
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	@JsonIgnore
-	private User user;
+	@Column(name = "user_id")
+	private int userId;
+	@Column(name = "image")
+	private String imageUrl;
 	public UserDetail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public UserDetail(int id, String name, String phone, String email, String address1, String address2, String city,
-			String state, String zip, User user) {
+			String state, String zip, int userId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -56,8 +57,41 @@ public class UserDetail {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.user = user;
+		this.userId = userId;
 	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public UserDetail(int id, String name, String phone, String email, String address1, String address2, String city,
+			String state, String zip, int userId, String imageUrl) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.userId = userId;
+		this.imageUrl = imageUrl;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -112,17 +146,12 @@ public class UserDetail {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	@Override
 	public String toString() {
 		return "UserDetail [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address1="
 				+ address1 + ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", user=" + user + "]";
+				+ ", userId=" + userId + ", imageUrl=" + imageUrl + "]";
 	}
 	
 	

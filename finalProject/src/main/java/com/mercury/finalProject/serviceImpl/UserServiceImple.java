@@ -15,11 +15,11 @@ import com.mercury.finalProject.bean.UserProfile;
 import com.mercury.finalProject.dao.UserDao;
 import com.mercury.finalProject.http.Response;
 import com.mercury.finalProject.security.SecurityUtils;
-import com.mercury.finalProject.service.UserService;
+import com.mercury.finalProject.service.UserServicee;
 
 @Service
 @Transactional
-public class UserServiceImple implements UserService {
+public class UserServiceImple implements UserServicee {
 
 	@Autowired
 	private UserDao userDao;
@@ -82,15 +82,15 @@ public class UserServiceImple implements UserService {
 	public Response updateUser(User user, Authentication authentication) {
 		if(user.getUsername().equals(authentication.getName())) {
 			User u = userDao.findByUsername(user.getUsername());
-			u.setImage(user.getImage());
-			u.getUserDetail().setAddress1(user.getUserDetail().getAddress1());
-			u.getUserDetail().setAddress2(user.getUserDetail().getAddress2());
-			u.getUserDetail().setName(user.getUserDetail().getName());
-			u.getUserDetail().setPhone(user.getUserDetail().getPhone());
-			u.getUserDetail().setCity(user.getUserDetail().getCity());
-			u.getUserDetail().setEmail(user.getUsername());
-			u.getUserDetail().setState(user.getUserDetail().getState());
-			u.getUserDetail().setZip(user.getUserDetail().getZip());
+//			u.setImage(user.getImage());
+//			u.getUserDetail().setAddress1(user.getUserDetail().getAddress1());
+//			u.getUserDetail().setAddress2(user.getUserDetail().getAddress2());
+//			u.getUserDetail().setName(user.getUserDetail().getName());
+//			u.getUserDetail().setPhone(user.getUserDetail().getPhone());
+//			u.getUserDetail().setCity(user.getUserDetail().getCity());
+//			u.getUserDetail().setEmail(user.getUsername());
+//			u.getUserDetail().setState(user.getUserDetail().getState());
+//			u.getUserDetail().setZip(user.getUserDetail().getZip());
 			userDao.save(u);
 		}else {
 			//TODO: Not authorize to update password if not current loggedin user or admin.

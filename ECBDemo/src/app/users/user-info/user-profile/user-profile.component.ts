@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {User} from '../../../shared/models/user';
 import {AuthService} from '../../../shared/services/auth.service';
 import {UpLoadImageComponent} from './up-load-image/up-load-image.component';
@@ -6,24 +6,28 @@ import {MatBottomSheet} from '@angular/material';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserDetail} from '../../../shared/models/user-detail';
 import {Router} from '@angular/router';
+import {ImageServiceService} from '../../../shared/services/images/image-service.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
-  user: User;
+export class UserProfileComponent implements OnInit, OnChanges {
+  userDetail: UserDetail;
   info: FormGroup;
   err = false;
+  imageToShow: any;
   constructor(
     private authS: AuthService,
     private bottomSheet: MatBottomSheet,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private imageService: ImageServiceService
   ) {}
   openBottomSheet(): void {
     this.bottomSheet.open(UpLoadImageComponent);
+    this.createImageFromBlob(this.imageService.userImage);
   }
   ngOnInit() {
     this.info = this.fb.group({
@@ -36,30 +40,49 @@ export class UserProfileComponent implements OnInit {
       zip: ['', [Validators.required, Validators.pattern('^\\d{5}(?:[-\\s]\\d{4})?$')]]
     });
   }
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener('load', () => {
+      this.imageToShow = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+  }
+  ngOnChanges() {
+
+  }
   onSubmit(){
     if (this.info.valid) {
       const { uname, phone,address1, address2, city, state, zip} = this.info.value;
-      this.authS.userSubject.subscribe( (res) => {
-        this.user = res;
-      })
-      this.user.userDetail = new UserDetail();
-      this.user.userDetail.name = uname;
-      this.user.userDetail.phone = phone;
-      this.user.userDetail.address1 = address1;
-      this.user.userDetail.address2 = address2;
-      this.user.userDetail.city = city;
-      this.user.userDetail.state = state;
-      this.user.userDetail.zip = zip;
-      this.authS.updateUsers(this.user)
+      if (this.userDetail == null)
+      this.userDetail = new UserDetail();
+      //this.user.image = this.imageToShow;
+      this.authS.userSubject.subscribe(res => {
+        this.userDetail.userId = res.id;
+        this.userDetail.email = res.username;
+      });
+      this.userDetail.name = uname;
+      this.userDetail.phone = phone;
+      this.userDetail.address1 = address1;
+      this.userDetail.address2 = address2;
+      this.userDetail.city = city;
+      this.userDetail.state = state;
+      this.userDetail.zip = zip;
+      console.log(this.userDetail);
+      this.authS.updateUserDetail(this.userDetail)
         .subscribe(res => {
+
           if (res.success) {
-            this.router.navigate(['/users/user-profile']);
+            this.router.navigate(['/home']);
           } else {
             // show error text.
           }
         }, (err) => { // error handling
           this.err = true;
         });
+
     } else {
       return false;
     }

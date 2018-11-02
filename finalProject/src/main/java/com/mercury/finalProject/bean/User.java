@@ -42,8 +42,6 @@ public class User implements UserDetails {
 	@NotNull
 	@Column(name = "password", nullable = false)
 	private String password;
-	@Column
-	private Blob image;
 	@Column(name = "onlinestatus")
 	private int onlineStatus;
 	@Column
@@ -59,8 +57,6 @@ public class User implements UserDetails {
 			@JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
 					@JoinColumn(name = "user_profile_id",referencedColumnName = "id")})
 	private List<UserProfile> profiles = new ArrayList<UserProfile>();
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private UserDetail userDetail;
 	
 
 	
@@ -92,19 +88,7 @@ public class User implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	public User(int id, @NotNull String username, @NotNull String password, Blob image, int activated, int credits,
-			Date registeredDate, List<UserProfile> profiles, UserDetail userDetail) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.image = image;
-		this.activated = activated;
-		this.credits = credits;
-		this.registeredDate = registeredDate;
-		this.profiles = profiles;
-		this.userDetail = userDetail;
-	}
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -127,12 +111,7 @@ public class User implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Blob getImage() {
-		return image;
-	}
-	public void setImage(Blob image) {
-		this.image = image;
-	}
+
 	public int getActivated() {
 		return activated;
 	}
@@ -157,20 +136,33 @@ public class User implements UserDetails {
 	public void setProfiles(List<UserProfile> profiles) {
 		this.profiles = profiles;
 	}
-	public UserDetail getUserDetail() {
-		return userDetail;
+	
+	public int getOnlineStatus() {
+		return onlineStatus;
 	}
-	public void setUserDetail(UserDetail userDetail) {
-		this.userDetail = userDetail;
+	public void setOnlineStatus(int onlineStatus) {
+		this.onlineStatus = onlineStatus;
+	}
+	public User(int id, @NotNull String username, @NotNull String password, int onlineStatus, int activated,
+			int credits, Date registeredDate, List<UserProfile> profiles) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.onlineStatus = onlineStatus;
+		this.activated = activated;
+		this.credits = credits;
+		this.registeredDate = registeredDate;
+		this.profiles = profiles;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", image=" + image
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", onlineStatus=" + onlineStatus
 				+ ", activated=" + activated + ", credits=" + credits + ", registeredDate=" + registeredDate
-				+ ", profiles=" + profiles + ", userDetail=" + userDetail + "]";
+				+ ", profiles=" + profiles + "]";
 	}
 	
 

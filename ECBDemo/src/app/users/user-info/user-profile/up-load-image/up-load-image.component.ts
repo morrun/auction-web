@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material';
 import {UserProfileComponent} from '../user-profile.component';
+import {ImageServiceService} from '../../../../shared/services/images/image-service.service';
 
 @Component({
   selector: 'app-up-load-image',
@@ -8,11 +9,15 @@ import {UserProfileComponent} from '../user-profile.component';
   styleUrls: ['./up-load-image.component.scss']
 })
 export class UpLoadImageComponent implements OnInit {
-  selectedFill = null;
-  constructor(private bottomSheetRef: MatBottomSheetRef<UserProfileComponent>) { }
+
+
+  constructor(
+    private bottomSheetRef: MatBottomSheetRef<UserProfileComponent>,
+    private imageService: ImageServiceService
+  ) { }
   onFileSelected(event) {
-    this.selectedFill = event.target.files[0];
-    console.log(this.selectedFill);
+    this.imageService.userImage = event.target.files[0];
+
   }
   ngOnInit() {
   }

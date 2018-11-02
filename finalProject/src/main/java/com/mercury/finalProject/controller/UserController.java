@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mercury.finalProject.bean.User;
 import com.mercury.finalProject.http.Response;
-import com.mercury.finalProject.service.UserService;
 import com.mercury.finalProject.serviceImpl.UserServiceImple;
 
 @RestController

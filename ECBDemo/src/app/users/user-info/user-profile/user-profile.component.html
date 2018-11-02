@@ -1,11 +1,12 @@
 
 <div class="container">
-
+  <label >
+    Choose your header icon: <button mat-stroked-button (click)="openBottomSheet()"  style="float: right;">Open file</button>
+    <img [src] = "imageToShow" >
+  </label>
   <form [formGroup]="info" (ngSubmit)="onSubmit()" class="container">
     <!--<form class="container" [formGroup]="info" (ngSubmit)="onSubmit()">-->
-      <label>
-        Choose your header icon: <button mat-stroked-button (click)="openBottomSheet()">Open file</button>
-      </label>
+
 
 
       <mat-form-field
@@ -43,7 +44,7 @@
       <mat-form-field
         [floatLabel]="auto">
         <mat-label>Please Input Your Address2</mat-label>
-        <input matInput placeholder="Suite/Apt" formControlName="address1" id="address1">
+        <input matInput placeholder="Suite/Apt" formControlName="address2" id="address2">
       </mat-form-field>
       <mat-form-field
         [hideRequiredMarker]="false"
@@ -78,7 +79,7 @@
           Please Input a Valid Zip Code!
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Accent</button>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
       <!--<mat-form-field-->
         <!--[hideRequiredMarker]="options.value.hideRequired"-->
         <!--[floatLabel]="options.value.floatLabel">-->

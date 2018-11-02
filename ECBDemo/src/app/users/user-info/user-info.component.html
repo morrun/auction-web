@@ -1,35 +1,48 @@
-<div class="container-fluid">
+<div>
   <mat-drawer-container class="example-container" autosize>
+
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <a mat-button routerLink="/user-info" (click)="showHome = true">
+      <a mat-button style="width: 90%; text-align: left;" routerLink="/user-info" (click)="showHome = true">
         User Profile
       </a>
       <mat-divider></mat-divider>
-      <a mat-button routerLink="user-profile"  (click)="showHome = false" class="float-md-left font-weight-bold">
-        Edit
+      <a mat-button style="width: 90%; text-align: left;" routerLink="modify-profile"  (click)="showHome = false" class="float-md-left" *ngIf="havePro">
+        Modify Profile
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-button style="width: 90%; text-align: left;" (click)="showHome = false" class="float-md-left">
+        Change Password
       </a>
     </mat-drawer>
-    <button mat-icon-button (click)="drawer.toggle()">a</button>
-    <!--<div class="example-sidenav-content">-->
-    <!--<button type="button" mat-button (click)="drawer.toggle()">-->
-    <!--Toggle sidenav-->
-    <!--</button>-->
-    <!--</div>-->
-    <div *ngIf="showHome">
-      <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>
+    <button mat-icon-button (click)="drawer.toggle()">Draw</button>
 
-        </mat-grid-tile>
-        <mat-grid-tile>2</mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
-      </mat-grid-list>
+    <div style="margin-left: 25%;" *ngIf="showHome">
+      <mat-card class="example-card" >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title *ngIf="userDetail">{{userDetail.name}}</mat-card-title>
+          <mat-card-subtitle *ngIf="userDetail">{{userDetail.email}}</mat-card-subtitle>
+          <button mat-raised-button color="primary" style="height: 50%; float: end" routerLink="user-profile" (click)="showHome = false" *ngIf="!havePro">Create One</button>
+
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
+
     <router-outlet></router-outlet>
+
   </mat-drawer-container>
-
-
-
 </div>
 

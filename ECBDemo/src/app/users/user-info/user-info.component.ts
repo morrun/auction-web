@@ -4,6 +4,7 @@ import {User} from '../../shared/models/user';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserDetail} from '../../shared/models/user-detail';
 import {Router} from '@angular/router';
+import {UserShowService} from '../../shared/services/user-show.service';
 
 @Component({
   selector: 'app-user-info',
@@ -25,12 +26,14 @@ export class UserInfoComponent implements OnInit, AfterContentInit {
   constructor(
     private authS: AuthService,
     private router: Router,
-    fb: FormBuilder) {
+    fb: FormBuilder,
+  public sh: UserShowService) {
     this.options = fb.group({
       bottom: 0,
       fixed: false,
       top: 0
     });
+    this.showHome = true;
   }
 
   ngOnInit(){

@@ -14,4 +14,5 @@ public interface UserServicee {
 	public Response changePassword(User user, Authentication authentication);
 	public Response deleteUser(int id);
 	public Response updateUser(User user, Authentication authentication);
+	public Response changePass(User user);
 }

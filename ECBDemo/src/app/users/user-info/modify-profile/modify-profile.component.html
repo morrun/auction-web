@@ -1,10 +1,10 @@
 
 <div class="container">
 
-  <form [formGroup]="info" (ngSubmit)="onSubmit()" class="container">
+  <form [formGroup]="info" *ngIf="userDetail" (ngSubmit)="onSubmit()" class="container">
     <mat-form-field
       [floatLabel]="auto">
-      <input matInput placeholder="{{userDetail.name}}" id="uname" formControlName="uname">
+      <input matInput  placeholder="{{userDetail.name}}" id="uname" formControlName="uname">
       <mat-error *ngIf="(info.get('uname').touched)&&info.get('uname').errors && info.get('uname').errors.minlength">
         Please input a correct name!
       </mat-error>
@@ -23,17 +23,17 @@
 
     <mat-form-field
       [floatLabel]="auto">
-      <mat-label>{{userDetail.address1}}</mat-label>
+      <mat-label >{{userDetail.address1}}</mat-label>
       <input matInput placeholder="Drive/Ave" formControlName="address1" id="address1">
     </mat-form-field>
     <mat-form-field
       [floatLabel]="auto">
-      <mat-label>{{userDetail.address2}}</mat-label>
+      <mat-label >{{userDetail.address2}}</mat-label>
       <input matInput placeholder="Suite/Apt" formControlName="address2" id="address2">
     </mat-form-field>
     <mat-form-field
       [floatLabel]="auto">
-      <input matInput placeholder="{{userDetail.city}}" id="city" formControlName="city">
+      <input matInput  placeholder="{{userDetail.city}}" id="city" formControlName="city">
       <mat-error *ngIf="(info.get('city').touched)&&info.get('city').errors && (info.get('city').errors.minlength||info.get('city').errors.maxlength)">
         Please Input a Valid City name!
       </mat-error>
@@ -41,14 +41,14 @@
     <mat-form-field
       [hideRequiredMarker]="false"
       [floatLabel]="auto">
-      <input matInput placeholder="{{userDetail.state}}" id="state" formControlName="state">
+      <input matInput  placeholder="{{userDetail.state}}" id="state" formControlName="state">
       <mat-error *ngIf="(info.get('state').touched)&&info.get('state').errors && (info.get('state').errors.minlength||info.get('state').errors.maxlength)">
         Please Input a Valid State Name!
       </mat-error>
     </mat-form-field>
     <mat-form-field
       [floatLabel]="auto">
-      <input matInput placeholder="{{userDetail.zip}}" id="zip" formControlName="zip">
+      <input matInput  placeholder="{{userDetail.zip}}" id="zip" formControlName="zip">
       <mat-error *ngIf="(info.get('zip').touched)&&info.get('zip').errors && (info.get('zip').errors.pattern)">
         Please Input a Valid Zip Code!
       </mat-error>

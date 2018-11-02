@@ -9,5 +9,4 @@ export class User {
   activated: number;
   credits: number;
   registeredDate?: Date;
-  authorities?: UserType[];
 }

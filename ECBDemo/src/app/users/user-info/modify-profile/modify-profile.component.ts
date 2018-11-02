@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {AuthService} from '../../../shared/services/auth.service';
 import {Router} from '@angular/router';
+import {UserShowService} from '../../../shared/services/user-show.service';
 
 @Component({
   selector: 'app-modify-profile',
@@ -21,7 +22,8 @@ export class ModifyProfileComponent implements OnInit {
     private authS: AuthService,
     private bottomSheet: MatBottomSheet,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private sh: UserShowService
   ) {
     this.authS.userSubject.subscribe(res => {
       this.id = res.id;
@@ -79,6 +81,7 @@ export class ModifyProfileComponent implements OnInit {
       this.authS.updateUserDetail(this.userDetail)
         .subscribe(res => {
           if (res.success) {
+            this.sh.showHome = true;
             this.router.navigate(['/user-info']);
           } else {
             // show error text.

@@ -40,7 +40,6 @@ export class AuthService {
       );
   }
   register(user: User): Observable<{success: boolean}> {
-    console.log(user);
     return this.http.post<{success: boolean, user: User}>(`${this.AUTH_API_URL}/users`, user);
   }
   logout(): Observable<{success: boolean}> {
@@ -57,5 +56,12 @@ export class AuthService {
   }
   getUserDetail(id: number): Observable<UserDetail> {
     return this.http.get<UserDetail>(`${this.AUTH_API_URL}/userDetails/${id}`);
+  }
+  checkPassword(id: number, password: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.AUTH_API_URL}/users/${id}`, password,{withCredentials: true});
+  }
+  changePassword(id: number, password: string): Observable<{success: boolean}> {
+    console.log(id, password);
+    return this.http.post<{success: boolean}>(`${this.AUTH_API_URL}/users/changePassword/${id}`, password,{withCredentials: true});
   }
 }

@@ -14,9 +14,11 @@ import {
   MatSidenav,
   MatSidenavModule
 } from '@angular/material';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpLoadImageComponent } from './user-profile/up-load-image/up-load-image.component';
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 const routes: Routes = [
@@ -31,6 +33,10 @@ const routes: Routes = [
       {
         path: 'modify-profile',
         component: ModifyProfileComponent
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent
       }
     ]
   }
@@ -52,9 +58,11 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
+    FlexLayoutModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserProfileComponent, UserInfoComponent,UpLoadImageComponent, ModifyProfileComponent],
+  declarations: [UserProfileComponent, UserInfoComponent,UpLoadImageComponent, ModifyProfileComponent, ChangePasswordComponent],
   entryComponents: [UpLoadImageComponent]
 })
 export class UserInfoModule { }

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,9 @@ import com.mercury.finalProject.serviceImpl.UserServiceImple;
 public class UserController {
 	@Autowired
 	private UserServiceImple userService;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("/users")	
@@ -41,7 +45,6 @@ public class UserController {
 	}
 	@PutMapping("/users/{id}")
 	public Response updateUser(@Valid @RequestBody User user, Authentication authentication) {
-		System.out.println("I am in controller");
 		return userService.updateUser(user, authentication);
 	}
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
@@ -53,5 +56,21 @@ public class UserController {
 	@DeleteMapping("/users/{id}")
 	public Response deleteUser(@PathVariable int id) {
 		return userService.deleteUser(id);
+	}
+	
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
+	@PostMapping("/users/{id}")
+	public boolean CheckPassword(@RequestBody String password, @PathVariable int id) {
+		User user = userService.getUserById(id);
+		String pw = passwordEncoder.encode(password);
+		if (!pw.equals(user.getPassword())) return false;
+		return true;
+	}
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
+	@PostMapping("/users/changePassword/{id}")
+	public Response ChangePassword(@RequestBody String password, @PathVariable int id, Authentication authentication) {
+		User user = userService.getUserById(id);
+		user.setPassword(password);
+		return userService.changePassword(user,authentication);
 	}
 }

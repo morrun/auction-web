@@ -99,5 +99,11 @@ public class UserServiceImple implements UserServicee {
 		return new Response(true);
 	}
 
+	@Override
+	public Response changePass(User user) {
+		userDao.save(user);
+		return new Response(true);
+	}
+
 	
 }

@@ -3,40 +3,44 @@
 
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <a mat-button style="width: 90%; text-align: left;" routerLink="/user-info" (click)="showHome = true">
+      <a mat-button style="width: 90%; text-align: left;" routerLink="/user-info" (click)="sh.showHome = true">
         User Profile
       </a>
       <mat-divider></mat-divider>
-      <a mat-button style="width: 90%; text-align: left;" routerLink="modify-profile"  (click)="showHome = false" class="float-md-left" *ngIf="havePro">
+      <a mat-button style="width: 90%; text-align: left;" routerLink="modify-profile"  (click)="sh.showHome = false" class="float-md-left" *ngIf="havePro">
         Modify Profile
       </a>
       <mat-divider></mat-divider>
-      <a mat-button style="width: 90%; text-align: left;" (click)="showHome = false" class="float-md-left">
+      <a mat-button style="width: 90%; text-align: left;" (click)="sh.showHome = false" routerLink="change-password" class="float-md-left">
         Change Password
       </a>
     </mat-drawer>
     <button mat-icon-button (click)="drawer.toggle()">Draw</button>
 
-    <div style="margin-left: 25%;" *ngIf="showHome">
-      <mat-card class="example-card" >
+    <div style="margin-left: 25%;" *ngIf="sh.showHome">
+      <mat-card class="example-card" *ngIf="userDetail">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title *ngIf="userDetail">{{userDetail.name}}</mat-card-title>
-          <mat-card-subtitle *ngIf="userDetail">{{userDetail.email}}</mat-card-subtitle>
-          <button mat-raised-button color="primary" style="height: 50%; float: end" routerLink="user-profile" (click)="showHome = false" *ngIf="!havePro">Create One</button>
+          <mat-card-title >{{userDetail.name}}</mat-card-title>
+          <mat-card-subtitle>{{userDetail.email}}</mat-card-subtitle>
+          <button mat-raised-button color="primary" style="height: 50%; float: end" routerLink="user-profile" (click)="sh.showHome = false" *ngIf="!havePro">Create One</button>
 
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
+          <div>
+            <mat-card-title style="display: inline-block">Phone Number  :</mat-card-title><a> </a>
+            <mat-card-title style="display: inline-block">&nbsp;{{userDetail.phone}}</mat-card-title>
+          </div>
+          <div>
+            <mat-card-title style="display: inline-block">Address  :</mat-card-title><a> </a>
+            <mat-card-subtitle style="display: inline-block">&nbsp;{{userDetail.address1}}&nbsp;{{userDetail.address2}}&nbsp;{{userDetail.city}},&nbsp;{{userDetail.state}}&nbsp;{{userDetail.zip}}</mat-card-subtitle>
+          </div>
+
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <button mat-button routerLink="modify-profile"  (click)="sh.showHome = false">EDIT PROFILE</button>
+          <button mat-button>CHANGE PHOTO</button>
         </mat-card-actions>
       </mat-card>
     </div>

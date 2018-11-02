@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../shared/services/auth.service';
 import {Router} from '@angular/router';
-import {UserType} from '../../shared/models/user-type';
-import {User} from '../../shared/models/user';
+
 
 @Component({
   selector: 'app-register',
@@ -49,9 +48,8 @@ export class RegisterComponent implements OnInit {
       const onlineStatus = 0;
       const activated: number = 0;
       const credits: number = 0;
-      const authorities: UserType[] = [];
       // const user: User = new User();
-      this.authService.register({ username, password, onlineStatus, activated, credits, authorities})
+      this.authService.register({ username, password, onlineStatus, activated, credits})
         .subscribe(res => {
           if (res.success) {
             this.router.navigate(['/users/login']);

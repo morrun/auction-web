@@ -7,6 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserDetail} from '../../../shared/models/user-detail';
 import {Router} from '@angular/router';
 import {ImageServiceService} from '../../../shared/services/images/image-service.service';
+import {UserShowService} from '../../../shared/services/user-show.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -23,7 +24,8 @@ export class UserProfileComponent implements OnInit, OnChanges {
     private bottomSheet: MatBottomSheet,
     private fb: FormBuilder,
     private router: Router,
-    private imageService: ImageServiceService
+    private imageService: ImageServiceService,
+    private sh: UserShowService
   ) {}
   openBottomSheet(): void {
     this.bottomSheet.open(UpLoadImageComponent);
@@ -70,11 +72,11 @@ export class UserProfileComponent implements OnInit, OnChanges {
       this.userDetail.city = city;
       this.userDetail.state = state;
       this.userDetail.zip = zip;
-      console.log(this.userDetail);
       this.authS.updateUserDetail(this.userDetail)
         .subscribe(res => {
 
           if (res.success) {
+           this.sh.showHome = true;
             this.router.navigate(['/home']);
           } else {
             // show error text.

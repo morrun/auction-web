@@ -15,6 +15,7 @@ import { RegisterComponent } from './users/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { UsernamePipePipe } from './shared/pipes/username-pipe.pipe';
+import { ProductTypePipe } from './shared/pipes/product-type.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UsernamePipePipe } from './shared/pipes/username-pipe.pipe';
     LoginComponent,
     RegisterComponent,
     UsernamePipePipe,
+    ProductTypePipe,
   ],
   imports: [
     BrowserModule,

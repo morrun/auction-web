@@ -5,7 +5,8 @@
   <span>
     <a mat-button routerLink="/home">Home</a>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/products">Auction Products</button>
+      <button mat-menu-item routerLink="/products">Products</button>
+      <button mat-menu-item>Auction Products</button>
       <button mat-menu-item>Counteroffer Products</button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="menu">Products</button>

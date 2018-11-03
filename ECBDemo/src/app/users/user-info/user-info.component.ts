@@ -33,7 +33,7 @@ export class UserInfoComponent implements OnInit, AfterContentInit {
       fixed: false,
       top: 0
     });
-    this.showHome = true;
+    this.sh.showHome = true;
   }
 
   ngOnInit(){

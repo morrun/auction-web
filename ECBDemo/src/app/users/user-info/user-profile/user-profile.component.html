@@ -11,7 +11,7 @@
 
       <mat-form-field
         [hideRequiredMarker]="false"
-        [floatLabel]="auto">
+        floatLabel="auto">
          <input matInput placeholder="Please Input Your Name" id="uname" formControlName="uname" required>
         <mat-error *ngIf="(info.get('uname').touched)&&info.get('uname').errors && info.get('uname').errors.required">
           Your name can't be empty!
@@ -25,7 +25,7 @@
       </mat-form-field>
       <mat-form-field
         [hideRequiredMarker]="false"
-        [floatLabel]="auto">
+        floatLabel="auto">
         <input matInput placeholder="Please Input Your Phone Number" id="phone" formControlName="phone" required>
         <mat-error *ngIf="(info.get('phone').touched)&&info.get('phone').errors && info.get('phone').errors.required">
           Please input a You Phone Number!
@@ -37,18 +37,18 @@
 
 
       <mat-form-field
-        [floatLabel]="auto">
+        floatLabel="auto">
         <mat-label>Please Input Your Address1</mat-label>
         <input matInput placeholder="Drive/Ave" formControlName="address1" id="address1">
       </mat-form-field>
       <mat-form-field
-        [floatLabel]="auto">
+        floatLabel="auto">
         <mat-label>Please Input Your Address2</mat-label>
         <input matInput placeholder="Suite/Apt" formControlName="address2" id="address2">
       </mat-form-field>
       <mat-form-field
         [hideRequiredMarker]="false"
-        [floatLabel]="auto">
+        floatLabel="auto">
         <input matInput placeholder="Please Input Your City" id="city" formControlName="city" required>
         <mat-error *ngIf="(info.get('city').touched)&&info.get('city').errors && info.get('city').errors.required">
           Please Input City!
@@ -59,7 +59,7 @@
       </mat-form-field>
       <mat-form-field
         [hideRequiredMarker]="false"
-        [floatLabel]="auto">
+        floatLabel="auto">
         <input matInput placeholder="Please Input Your State" id="state" formControlName="state" required>
         <mat-error *ngIf="(info.get('state').touched)&&info.get('state').errors && info.get('state').errors.required">
           Please Input State!
@@ -70,7 +70,7 @@
       </mat-form-field>
       <mat-form-field
         [hideRequiredMarker]="false"
-        [floatLabel]="auto">
+        floatLabel="auto">
         <input matInput placeholder="Please Input Your Zip Code" id="zip" formControlName="zip" required>
         <mat-error *ngIf="(info.get('zip').touched)&&info.get('zip').errors && info.get('zip').errors.required">
           Please Input Zip Code!

@@ -7,7 +7,7 @@ import {
   MatCheckboxModule, MatDialogModule, MatDrawer, MatExpansionModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,
+  MatListModule, MatMenuModule, MatPaginatorModule, MatRadioModule, MatSelectModule,
   MatSidenavModule, MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -55,6 +55,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatExpansionModule,
     CdkTableModule,
     FlexLayoutModule,
+    MatPaginatorModule,
     MatMenuModule,
   ]
 })

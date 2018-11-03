@@ -2932,3 +2932,9 @@ java.lang.IllegalArgumentException: Name for argument type [int] not available, 
 2018-11-02 13:53:31.187  INFO 3588 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2018-11-02 13:53:31.187  INFO 3588 --- [restartedMain] c.m.f.FinalProjectApplication            : Started FinalProjectApplication in 1.946 seconds (JVM running for 1034.75)
 2018-11-02 13:53:31.187  INFO 3588 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2018-11-02 13:54:08.133  INFO 3588 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-11-02 13:54:08.134  INFO 3588 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-11-02 13:54:08.139  INFO 3588 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 5 ms
+2018-11-02 13:54:08.143  INFO 3588 --- [http-nio-8080-exec-10] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-11-02 18:02:33.012  WARN 3588 --- [HikariPool-9 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Thread starvation or clock leap detected (housekeeper delta=31m1s681ms863µs881ns).
+2018-11-02 18:59:03.116  WARN 3588 --- [HikariPool-9 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Thread starvation or clock leap detected (housekeeper delta=24m29s672ms146µs834ns).

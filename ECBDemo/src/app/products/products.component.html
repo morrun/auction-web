@@ -1,13 +1,30 @@
-<div style="heigth: 900px">
+<div style="min-height: 600px">
   <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="over">
-    <p><button mat-button color="primary" (click)="sidenav.toggle()">Toggle</button></p>
     <p>
       <mat-radio-group class="example-radio-group" [formControl]="mode">
-        <label>Mode:</label>
-        <!--<mat-radio-button value="over">Over</mat-radio-button>-->
-        <!--<mat-radio-button value="side">Side</mat-radio-button>-->
-        <!--<mat-radio-button value="push">Push</mat-radio-button>-->
+        <mat-card-title>Filter: </mat-card-title><br/>
+        <mat-card-subtitle>Types: </mat-card-subtitle>
+        <mat-form-field>
+          <mat-select placeholder="Products Type" [(ngModel)]="selectedValue">
+            <mat-option [value]="All" (click)="showAll()">All</mat-option>
+            <mat-option *ngFor="let pt of productTypes" [value]="pt.type" (click)="changeView()">
+              {{pt.type}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br/>
+        <mat-form-field style="width: 100%;">
+          <input matInput type="number" placeholder="Min Price" [(ngModel)]="min" (change)="modifyViewByMin()">
+          <button mat-button *ngIf="min" matSuffix mat-icon-button aria-label="Clear" (click)="restoreMin()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field><br/>
+        <mat-form-field style="width: 100%;">
+          <input matInput type="number" placeholder="Max Price" [(ngModel)]="max" (change)="modifyViewByMin()">
+          <button mat-button *ngIf="max" matSuffix mat-icon-button aria-label="Clear" (click)="restoreMax()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
       </mat-radio-group>
     </p>
   </mat-sidenav>
@@ -17,7 +34,7 @@
     <mat-accordion>
       <mat-expansion-panel *ngFor="let product of activePageDataChunk">
         <mat-expansion-panel-header>
-          <mat-panel-title style="width: 50%">
+          <mat-panel-title style="width: 40%">
             {{product.title}}
           </mat-panel-title>
           <mat-panel-description style="width: 20%;text-align: left">
@@ -25,6 +42,9 @@
           </mat-panel-description>
           <mat-panel-description style="width: 20%;text-align: left" *ngIf="productTypes">
             Type: {{productTypes | productType: product.productTypeId}}
+          </mat-panel-description>
+          <mat-panel-description style="width: 20%;text-align: left" *ngIf="shelvesP">
+            SellingType: {{shelvesP | shelvesProduct: product.id}}
           </mat-panel-description>
         </mat-expansion-panel-header>
 

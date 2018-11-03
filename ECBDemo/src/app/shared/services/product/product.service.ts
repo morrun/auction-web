@@ -18,6 +18,6 @@ export class ProductService {
   }
 
   getProductsByIdList(id: number[]): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.AUTH_API_URL}/products/${id}`);
+    return this.http.get<Product[]>(`${this.AUTH_API_URL}/products-list/${id}`);
   }
 }

@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { UsernamePipePipe } from './shared/pipes/username-pipe.pipe';
 import { ProductTypePipe } from './shared/pipes/product-type.pipe';
+import { ShelvesProductPipe } from './shared/pipes/shelves-product.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProductTypePipe } from './shared/pipes/product-type.pipe';
     RegisterComponent,
     UsernamePipePipe,
     ProductTypePipe,
+    ShelvesProductPipe,
   ],
   imports: [
     BrowserModule,

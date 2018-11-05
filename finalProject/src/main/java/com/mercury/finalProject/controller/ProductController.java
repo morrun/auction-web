@@ -24,9 +24,14 @@ public class ProductController {
 		
 		return productServiceImpl.getProducts();
 	}
+	@GetMapping("/products/{id}")
+	public Product getProducts(@PathVariable int id) {
+		
+		return productServiceImpl.getByProductId(id);
+	}
 	
-	@GetMapping("/products-list/{id}")
-	public List<Product> getProductsByID(@PathVariable("id") List<Integer> ids){ 
+	@PostMapping("/products-list")
+	public List<Product> getProductsByID(@RequestBody List<Integer> ids){ 
 		return productServiceImpl.getProductsById(ids);
 	}
 	@PostMapping("/products")

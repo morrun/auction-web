@@ -6,8 +6,8 @@
     <a mat-button routerLink="/home">Home</a>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/products">Products</button>
-      <button mat-menu-item>Auction Products</button>
-      <button mat-menu-item>Counteroffer Products</button>
+      <button mat-menu-item routerLink="/auctionProducts">Auction Products</button>
+      <button mat-menu-item routerLink="/counterofferProducts">Counteroffer Products</button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="menu">Products</button>
   </span>
@@ -15,6 +15,7 @@
   <span class="example-fill-remaining-space"></span>
   <mat-menu #userProfile="matMenu">
     <button mat-menu-item routerLink="/user-info" (click)="sh.showHome = true;">User Info</button>
+    <button mat-menu-item routerLink="/sell-products">Sell Products</button>
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
   <span [matMenuTriggerFor]="userProfile" mat-menu-item *ngIf="(authService.userSubject | async); else login">

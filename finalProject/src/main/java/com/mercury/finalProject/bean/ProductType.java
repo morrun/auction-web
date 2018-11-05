@@ -36,9 +36,7 @@ public class ProductType {
 		ID = iD;
 	}
 
-	public String getType() {
-		return type;
-	}
+
 
 	public void setType(String type) {
 		this.type = type;
@@ -58,6 +56,11 @@ public class ProductType {
 	@Override
 	public String toString() {
 		return "ProductType [ID=" + ID + ", type=" + type + "]";
+	}
+
+	public String getType() {
+		// TODO Auto-generated method stub
+		return type;
 	}
 
 }

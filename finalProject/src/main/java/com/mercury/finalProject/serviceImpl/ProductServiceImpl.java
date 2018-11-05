@@ -1,5 +1,6 @@
 package com.mercury.finalProject.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,17 @@ public class ProductServiceImpl implements ProductService {
 	}
 	@Override
 	public List<Product> getProductsById(List<Integer> ids) {
-		return productDao.findByIdIn(ids);
+		List<Product> lp = productDao.findByIdIn(ids);
+		List<Product> res = new ArrayList();
+		for (Integer i: ids) {
+			for (Product p: lp) {
+				if (p.getId() == i) {
+					res.add(p);
+					break;
+				}
+			}
+		}
+		return res;
 	}
 	@Override
 	public Response addProduct(Product p) {
@@ -33,6 +44,10 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductsByTypeId(int id) {
 		// TODO Auto-generated method stub
 		return productDao.findByProductTypeId(id);
+	}
+	@Override
+	public Product getByProductId(int id) {
+		return productDao.findById(id);
 	}
 
 }

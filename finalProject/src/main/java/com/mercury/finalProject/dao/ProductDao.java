@@ -9,4 +9,5 @@ import com.mercury.finalProject.bean.Product;
 public interface ProductDao extends JpaRepository<Product, Integer> {
 	List<Product> findByIdIn(List<Integer> ids);
 	List<Product> findByProductTypeId(Integer id);
+	Product findById(int id);
 }

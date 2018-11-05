@@ -15,7 +15,6 @@ import {
   MatSidenavModule
 } from '@angular/material';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { UpLoadImageComponent } from './user-profile/up-load-image/up-load-image.component';
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -62,7 +61,6 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserProfileComponent, UserInfoComponent,UpLoadImageComponent, ModifyProfileComponent, ChangePasswordComponent],
-  entryComponents: [UpLoadImageComponent]
+  declarations: [UserProfileComponent, UserInfoComponent, ModifyProfileComponent, ChangePasswordComponent],
 })
 export class UserInfoModule { }

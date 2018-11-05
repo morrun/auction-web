@@ -1,13 +1,12 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {User} from '../../../shared/models/user';
 import {AuthService} from '../../../shared/services/auth.service';
-import {UpLoadImageComponent} from './up-load-image/up-load-image.component';
 import {MatBottomSheet} from '@angular/material';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserDetail} from '../../../shared/models/user-detail';
 import {Router} from '@angular/router';
 import {ImageServiceService} from '../../../shared/services/images/image-service.service';
 import {UserShowService} from '../../../shared/services/user-show.service';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,6 +14,10 @@ import {UserShowService} from '../../../shared/services/user-show.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit, OnChanges {
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
+
   userDetail: UserDetail;
   info: FormGroup;
   err = false;
@@ -27,10 +30,12 @@ export class UserProfileComponent implements OnInit, OnChanges {
     private imageService: ImageServiceService,
     private sh: UserShowService
   ) {}
-  openBottomSheet(): void {
-    this.bottomSheet.open(UpLoadImageComponent);
-    this.createImageFromBlob(this.imageService.userImage);
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+    // console.log(event.target.files);
+    // this.result = event.target.files.length;
   }
+
   ngOnInit() {
     this.info = this.fb.group({
       uname: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
@@ -41,26 +46,26 @@ export class UserProfileComponent implements OnInit, OnChanges {
       state: ['',[Validators.required,Validators.minLength(2), Validators.maxLength(15)]],
       zip: ['', [Validators.required, Validators.pattern('^\\d{5}(?:[-\\s]\\d{4})?$')]]
     });
-  }
-  createImageFromBlob(image: Blob) {
-    let reader = new FileReader();
-    reader.addEventListener('load', () => {
-      this.imageToShow = reader.result;
-    }, false);
 
-    if (image) {
-      reader.readAsDataURL(image);
-    }
   }
+  // createImageFromBlob(image: Blob) {
+  //   let reader = new FileReader();
+  //   reader.addEventListener('load', () => {
+  //     this.imageToShow = reader.result;
+  //   }, false);
+  //
+  //   if (image) {
+  //     reader.readAsDataURL(image);
+  //   }
+  // }
   ngOnChanges() {
-
   }
   onSubmit(){
     if (this.info.valid) {
-      const { uname, phone,address1, address2, city, state, zip} = this.info.value;
+      const { uname, phone, address1, address2, city, state, zip} = this.info.value;
       if (this.userDetail == null)
       this.userDetail = new UserDetail();
-      //this.user.image = this.imageToShow;
+      // this.user.image = this.imageToShow;
       this.authS.userSubject.subscribe(res => {
         this.userDetail.userId = res.id;
         this.userDetail.email = res.username;
@@ -76,18 +81,37 @@ export class UserProfileComponent implements OnInit, OnChanges {
         .subscribe(res => {
 
           if (res.success) {
-           this.sh.showHome = true;
-            this.router.navigate(['/home']);
+           // this.sh.showHome = true;
+            if (this.userDetail.userId) {
+              this.upload(this.userDetail.userId);
+            }
           } else {
             // show error text.
           }
-        }, (err) => { // error handling
+        }, ( err) => { // error handling
           this.err = true;
         });
+
 
     } else {
       return false;
     }
+  }
+  upload(tId: number) {
+    this.progress.percentage = 0;
+
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.imageService.pushFileToUserStorage(this.currentFileUpload, tId)
+      .subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+        this.router.navigate(['/home']);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+      }
+    });
+    // this.imageService.pushFileToUserStorage(this.currentFileUpload,this.userDetail.userId).subscribe();
+    this.selectedFiles = undefined;
   }
 
 }

@@ -1,0 +1,41 @@
+<div class="container-fluid" *ngIf="product && productType" style="min-height: 600px">
+  <div class="row product-detail-container">
+    <div class="col-sm-9">
+      <div class="product-detail-title">
+        <h1>{{product.name}}</h1>
+      </div>
+      <div class="product-detail-image-container text-center">
+        <img src="{{product.image}}" class="product-detail-image">
+      </div>
+    </div>
+    <div class="col-sm-3 product-detail-info-container">
+      <div class="product-detail-info-price">
+        {{product.price | currency: 'USD'}}
+      </div>
+      <div class="product-detail-info-brand">
+        Type: {{productType.type}}
+      </div>
+      <div class="product-detail-info-brand">
+        Title: {{product.title}}
+      </div>
+      <div class="product-detail-info-brand">
+        Description: {{product.description}}
+      </div>
+      <div class="product-detail-info-brand">
+        Selling Deadline: {{product.deadline}}
+      </div>
+      <div class="product-detail-info-cart-button-container" *ngIf="show; else auction;">
+        <span>
+          <button class="btn-block btn-primary btn" (click)="negotiate()">Negotiate</button>
+        </span>
+      </div>
+      <ng-template #auction>
+        <div class="product-detail-info-cart-button-container">
+        <span>
+          <button class="btn-block btn-primary btn" (click)="bidding()">Bidding</button>
+        </span>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

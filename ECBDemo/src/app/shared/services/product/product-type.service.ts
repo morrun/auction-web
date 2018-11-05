@@ -15,4 +15,7 @@ export class ProductTypeService {
   getAllProductTypes(): Observable<ProductType[]> {
     return this.http.get<ProductType[]>(`${this.AUTH_API_URL}/productTypes`);
   }
+  getProductByPId(id: number): Observable<ProductType> {
+    return this.http.get<ProductType>(`${this.AUTH_API_URL}/productTypes/${id}`);
+  }
 }

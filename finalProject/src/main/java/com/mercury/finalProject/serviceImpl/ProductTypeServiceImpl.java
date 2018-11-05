@@ -19,5 +19,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		// TODO Auto-generated method stub
 		return productTypeDao.findAll();
 	}
+	@Override
+	public ProductType getProductTypeById(int id) {		
+		return productTypeDao.findById(id);
+	}
 
 }

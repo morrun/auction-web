@@ -1,12 +1,25 @@
 
 <div class="container">
-  <label >
-    Choose your header icon: <button mat-stroked-button (click)="openBottomSheet()"  style="float: right;">Open file</button>
-    <img [src] = "imageToShow" >
-  </label>
+  <!--<label >-->
+    <!--Choose your header icon: <button mat-stroked-button (click)="openBottomSheet()"  style="float: right;">Open file</button>-->
+  <!--</label>-->
+    <!--<img [src] = "imageToShow" style="width: 100px;height: 140px;margin-left: 40%"><br/><br/>-->
+  <div class="container-fluid">
+    <div *ngIf="currentFileUpload" class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+           aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+        {{progress.percentage}}%</div>
+    </div>
+
+    <label class="btn btn-default">
+     Choose Your Icon: <input type="file" (change)="selectFile($event)">
+      <!--<span>{{result}}</span>-->
+    </label>
+
+    <button class="btn btn-success" [disabled]="!selectedFiles" >Upload</button>
+  </div>
   <form [formGroup]="info" (ngSubmit)="onSubmit()" class="container">
     <!--<form class="container" [formGroup]="info" (ngSubmit)="onSubmit()">-->
-
 
 
       <mat-form-field
@@ -80,25 +93,6 @@
         </mat-error>
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Submit</button>
-      <!--<mat-form-field-->
-        <!--[hideRequiredMarker]="options.value.hideRequired"-->
-        <!--[floatLabel]="options.value.floatLabel">-->
-        <!--<mat-select required>-->
-          <!--<mat-option>&#45;&#45; None &#45;&#45;</mat-option>-->
-          <!--<mat-option value="option">Option</mat-option>-->
-        <!--</mat-select>-->
-        <!--<mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>-->
-      <!--</mat-form-field>-->
-
-      <!--<mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>-->
-      <!--<div>-->
-        <!--<label>Float label: </label>-->
-        <!--<mat-radio-group formControlName="floatLabel">-->
-          <!--<mat-radio-button value="auto">Auto</mat-radio-button>-->
-          <!--<mat-radio-button value="always">Always</mat-radio-button>-->
-          <!--<mat-radio-button value="never">Never</mat-radio-button>-->
-        <!--</mat-radio-group>-->
-      <!--</div>-->
     </form>
 
 

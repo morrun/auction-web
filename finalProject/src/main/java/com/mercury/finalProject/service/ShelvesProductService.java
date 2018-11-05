@@ -8,4 +8,5 @@ import com.mercury.finalProject.http.Response;
 public interface ShelvesProductService {
 	public List<ShelvesProduct> getAllShelvesProducts();
 	public Response addShelvesProduct(ShelvesProduct p);
+	public ShelvesProduct getShelvesProductById(int id);
 }

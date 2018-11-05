@@ -30,7 +30,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p><button mat-button color="primary" (click)="sidenav.toggle()">Pull</button></p>
+    <p><button mat-button color="primary" (click)="sidenav.toggle()">Filter</button></p>
     <mat-accordion>
       <mat-expansion-panel *ngFor="let product of activePageDataChunk">
         <mat-expansion-panel-header>
@@ -60,7 +60,7 @@
           <!--<input matInput placeholder="First name">-->
         <!--</mat-form-field>-->
         <mat-panel-description>
-          <button mat-raised-button color="primary">Primary</button>
+          <a mat-raised-button color="primary" [routerLink] = "['/product-detail',product.id]">Primary</a>
           <p map-raised-button style="float: right"> Deadline: {{product.deadline}}</p>
         </mat-panel-description>
         <!--<mat-form-field>-->

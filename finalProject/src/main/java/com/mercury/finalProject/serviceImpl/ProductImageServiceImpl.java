@@ -15,9 +15,9 @@ public class ProductImageServiceImpl implements ProductImageService {
 	@Autowired
 	private ProductImageDao pio;
 	@Override
-	public Response addProductImages(List<ProductImage> images) {
-		// TODO Auto-generated method stub
-		pio.saveAll(images);
+	public Response addProductImages(ProductImage images) {
+		
+		pio.save(images);
 		return new Response(true);
 	}
 	@Override

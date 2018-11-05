@@ -28,29 +28,24 @@ public class ProductImage {
 	private int id;
 	
 	@Column
-	private Blob image;
+	private String image;
 	
-//	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "product_id")
-//	@JsonIgnoreProperties("productImages")
-//	private Product product;
+
 	@Column(name = "product_id")
 	private int productId;
 	public ProductImage() {
 		super();
 	}
 
-
-
-
-	public ProductImage(int id, Blob image) {
+	
+	public ProductImage(String image, int productId) {
 		super();
-		this.id = id;
 		this.image = image;
+		this.productId = productId;
 	}
 
 
-	public ProductImage(int id, Blob image, int productId) {
+	public ProductImage(int id, String image, int productId) {
 		super();
 		this.id = id;
 		this.image = image;
@@ -58,6 +53,14 @@ public class ProductImage {
 	}
 
 
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 
 	public int getProductId() {
@@ -82,13 +85,7 @@ public class ProductImage {
 		this.id = id;
 	}
 
-	public Blob getImage() {
-		return image;
-	}
-
-	public void setImage(Blob image) {
-		this.image = image;
-	}
+	
 
 
 	@Override

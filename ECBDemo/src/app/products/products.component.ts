@@ -50,9 +50,6 @@ export class ProductsComponent implements OnInit {
     this.pts.getAllProductTypes()
       .subscribe( res => {
         this.productTypes = res;
-        this.productTypes.sort((a,b) => {
-          return a.id - b.id;
-        });
       });
     this.oss.getAllShelvesData()
       .subscribe( res => {
@@ -127,4 +124,5 @@ export class ProductsComponent implements OnInit {
     this.max = null;
     this.changeView();
   }
+
 }

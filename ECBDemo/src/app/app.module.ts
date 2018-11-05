@@ -17,6 +17,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { UsernamePipePipe } from './shared/pipes/username-pipe.pipe';
 import { ProductTypePipe } from './shared/pipes/product-type.pipe';
 import { ShelvesProductPipe } from './shared/pipes/shelves-product.pipe';
+import { CounterofferProductsComponent } from './products/counteroffer-products/counteroffer-products.component';
+import { AuctionProductsComponent } from './products/auction-products/auction-products.component';
+import { ProductsDetailComponent } from './products/products-detail/products-detail.component';
+import { SellProductsComponent } from './users/sell-products/sell-products.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { ShelvesProductPipe } from './shared/pipes/shelves-product.pipe';
     UsernamePipePipe,
     ProductTypePipe,
     ShelvesProductPipe,
+    CounterofferProductsComponent,
+    AuctionProductsComponent,
+    ProductsDetailComponent,
+    SellProductsComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +28,9 @@ public class ShelvesProductController {
 	public Response addShelvesProducts(@RequestBody ShelvesProduct p) {
 		p.getShelves().setOnShelvesDate(new Date());
 		return sps.addShelvesProduct(p);
+	}
+	@GetMapping("/shelvesProducts/{id}")
+	public ShelvesProduct getShelvesProductsByProductId(@PathVariable int id) {
+		return sps.getShelvesProductById(id);
 	}
 }

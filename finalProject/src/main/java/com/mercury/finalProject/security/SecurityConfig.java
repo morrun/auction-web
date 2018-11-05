@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.cors() // cors config.
 				.and()
 			.authorizeRequests()
-				.antMatchers("/index.html","/products","/products/*").permitAll()
+				.antMatchers("/index.html","/products","/products/*","/productImage","/userDetails/*").permitAll()
 //				.antMatchers("/orderProducts", "/orderProducts/*").hasAnyRole("USER", "ADMIN")
 //				.antMatchers("/users", "/users/*").hasAnyRole("ADMIN")
 				.and()

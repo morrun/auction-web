@@ -15,4 +15,7 @@ export class OnShelvesService {
   getAllShelvesData(): Observable<ShelvesProduct[]> {
     return this.http.get<ShelvesProduct[]>(`${this.AUTH_API_URL}/shelvesProducts`);
   }
+  getShelvesByProductId(id: number): Observable<ShelvesProduct> {
+    return this.http.get<ShelvesProduct>(`${this.AUTH_API_URL}/shelvesProducts/${id}`);
+  }
 }

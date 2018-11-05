@@ -4,6 +4,10 @@ import {HomeComponent} from './home/home.component';
 import {ProductsComponent} from './products/products.component';
 import {LoginComponent} from './users/login/login.component';
 import {RegisterComponent} from './users/register/register.component';
+import {CounterofferProductsComponent} from './products/counteroffer-products/counteroffer-products.component';
+import {AuctionProductsComponent} from './products/auction-products/auction-products.component';
+import {ProductsDetailComponent} from './products/products-detail/products-detail.component';
+import {SellProductsComponent} from './users/sell-products/sell-products.component';
 
 
 const routes: Routes = [
@@ -13,7 +17,15 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsComponent
+    component: ProductsComponent,
+  },
+  {
+    path: 'counterofferProducts',
+    component: CounterofferProductsComponent
+  },
+  {
+    path: 'auctionProducts',
+    component: AuctionProductsComponent
   },
   {
     path: 'users',
@@ -31,6 +43,14 @@ const routes: Routes = [
   {
     path: 'user-info',
     loadChildren: '../app/users/user-info/user-info.module#UserInfoModule'
+  },
+  {
+    path: 'product-detail/:id',
+    component: ProductsDetailComponent
+  },
+  {
+    path: 'sell-products',
+    component: SellProductsComponent
   },
   {
     path: '',

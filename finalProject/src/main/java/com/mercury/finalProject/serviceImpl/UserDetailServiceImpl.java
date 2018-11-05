@@ -46,7 +46,7 @@ public class UserDetailServiceImpl implements UserDetailService {
 		
 		String inAwsName = "user" + id + "" + ud.getId() + "." + type;
 		String finalName = preName +  "/" + inAwsName;
-		ud.setImageUrl(finalName);
+		ud.setImage(finalName);
 		System.out.println(ud + "**********************************888");
 		userDetailDao.save(ud);
 		s3s.uploadFile(inAwsName, file);

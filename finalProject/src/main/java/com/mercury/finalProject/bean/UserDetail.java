@@ -39,7 +39,7 @@ public class UserDetail {
 	@Column(name = "user_id")
 	private int userId;
 	@Column(name = "image")
-	private String imageUrl;
+	private String image;
 	public UserDetail() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -60,16 +60,9 @@ public class UserDetail {
 		this.userId = userId;
 	}
 	
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
 
 	public UserDetail(int id, String name, String phone, String email, String address1, String address2, String city,
-			String state, String zip, int userId, String imageUrl) {
+			String state, String zip, int userId, String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -81,7 +74,7 @@ public class UserDetail {
 		this.state = state;
 		this.zip = zip;
 		this.userId = userId;
-		this.imageUrl = imageUrl;
+		this.image = image;
 	}
 
 	public int getUserId() {
@@ -146,13 +139,23 @@ public class UserDetail {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDetail [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address1="
 				+ address1 + ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", userId=" + userId + ", imageUrl=" + imageUrl + "]";
+				+ ", userId=" + userId + ", image=" + image + "]";
 	}
+	
+
 	
 	
 }

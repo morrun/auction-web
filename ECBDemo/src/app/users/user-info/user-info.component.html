@@ -26,7 +26,7 @@
           <button mat-raised-button color="primary" style="height: 50%; float: end" routerLink="user-profile" (click)="sh.showHome = false" *ngIf="!havePro">Create One</button>
 
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="userDetail.image" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <div>
             <mat-card-title style="display: inline-block">Phone Number  :</mat-card-title><a> </a>
@@ -40,7 +40,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-button routerLink="modify-profile"  (click)="sh.showHome = false">EDIT PROFILE</button>
-          <button mat-button>CHANGE PHOTO</button>
+          <button mat-button (click)="openDialog()">CHANGE PHOTO</button>
         </mat-card-actions>
       </mat-card>
     </div>

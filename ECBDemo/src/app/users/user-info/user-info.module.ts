@@ -7,7 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import {
   MatBottomSheetModule,
   MatButtonModule, MatCardModule,
-  MatCheckboxModule,
+  MatCheckboxModule, MatDialogModule,
   MatDividerModule, MatFormFieldModule,
   MatGridListModule, MatIconModule, MatInputModule, MatListModule,
   MatRadioModule, MatSelectModule,
@@ -18,6 +18,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModifyProfileComponent } from './modify-profile/modify-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { DialogChangePhotoComponent } from './dialog-change-photo/dialog-change-photo.component';
 
 
 const routes: Routes = [
@@ -59,8 +60,10 @@ const routes: Routes = [
     MatCardModule,
     FlexLayoutModule,
     FormsModule,
+    MatDialogModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserProfileComponent, UserInfoComponent, ModifyProfileComponent, ChangePasswordComponent],
+  declarations: [UserProfileComponent, UserInfoComponent, ModifyProfileComponent, ChangePasswordComponent, DialogChangePhotoComponent],
+  entryComponents:[DialogChangePhotoComponent]
 })
 export class UserInfoModule { }

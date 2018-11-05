@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {UserDetail} from '../../shared/models/user-detail';
 import {Router} from '@angular/router';
 import {UserShowService} from '../../shared/services/user-show.service';
+import {DialogChangePhotoComponent} from './dialog-change-photo/dialog-change-photo.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-user-info',
@@ -27,7 +29,9 @@ export class UserInfoComponent implements OnInit, AfterContentInit {
     private authS: AuthService,
     private router: Router,
     fb: FormBuilder,
-  public sh: UserShowService) {
+  public sh: UserShowService,
+    public dialog: MatDialog,
+    private userShow: UserShowService) {
     this.options = fb.group({
       bottom: 0,
       fixed: false,
@@ -48,6 +52,7 @@ export class UserInfoComponent implements OnInit, AfterContentInit {
         this.userDetail.email = 'XXXXXXXXX';
       } else {
         this.userDetail = res;
+        this.userShow.userId = this.userDetail.userId;
         this.havePro = true;
       }
 
@@ -65,6 +70,17 @@ export class UserInfoComponent implements OnInit, AfterContentInit {
         this.havePro = true;
       }
 
+    });
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogChangePhotoComponent, {
+      minWidth: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      location.reload();
+      console.log('The dialog was closed');
     });
   }
 }

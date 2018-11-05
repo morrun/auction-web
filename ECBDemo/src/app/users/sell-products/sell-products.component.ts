@@ -12,9 +12,9 @@ export class SellProductsComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   progress: { percentage: number } = { percentage: 0 };
-
-  constructor(private uploadService: ImageServiceService) { }
   result: string = '';
+  constructor(private uploadService: ImageServiceService) { }
+
   ngOnInit() {
   }
 

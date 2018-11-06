@@ -5,7 +5,12 @@
         <h1>{{product.name}}</h1>
       </div>
       <div class="product-detail-image-container text-center">
-        <img src="{{product.image}}" class="product-detail-image">
+        <mat-tab-group>
+          <mat-tab  class="product-detail-image" *ngFor="let pitem of productImage" label="^">
+            <img [src]="pitem.image" style="width: 100%;height:100%">
+          </mat-tab>
+        </mat-tab-group>
+        <!--<img src="{{product.image}}" class="product-detail-image">-->
       </div>
     </div>
     <div class="col-sm-3 product-detail-info-container">

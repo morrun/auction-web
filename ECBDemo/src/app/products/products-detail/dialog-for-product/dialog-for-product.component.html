@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Please input your expected price!</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="price">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="submit()" cdkFocusInitial>Ok</button>
+</div>

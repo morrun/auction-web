@@ -22,6 +22,8 @@ import { AuctionProductsComponent } from './products/auction-products/auction-pr
 import { ProductsDetailComponent } from './products/products-detail/products-detail.component';
 import { SellProductsComponent } from './users/sell-products/sell-products.component';
 import { ProductImagePipe } from './shared/pipes/product-image.pipe';
+import { DialogForProductComponent } from './products/products-detail/dialog-for-product/dialog-for-product.component';
+import { ViewMyProductComponent } from './users/view-my-product/view-my-product.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ProductImagePipe } from './shared/pipes/product-image.pipe';
     ProductsDetailComponent,
     SellProductsComponent,
     ProductImagePipe,
+    DialogForProductComponent,
+    ViewMyProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { ProductImagePipe } from './shared/pipes/product-image.pipe';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogForProductComponent]
 })
 export class AppModule { }

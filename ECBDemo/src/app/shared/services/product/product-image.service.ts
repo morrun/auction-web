@@ -16,4 +16,7 @@ export class ProductImageService {
   getAllImage(): Observable<ProductImage[]> {
     return this.http.get<ProductImage[]>(`${this.AUTH_API_URL}/productImage`);
   }
+  getImagesByProductId(id: number): Observable<ProductImage[]> {
+    return this.http.get<ProductImage[]>(`${this.AUTH_API_URL}/productImage/${id}`);
+  }
 }

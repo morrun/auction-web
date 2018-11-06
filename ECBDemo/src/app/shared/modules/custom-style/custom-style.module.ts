@@ -4,10 +4,10 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatBadgeModule,
   MatButtonModule, MatCardModule,
-  MatCheckboxModule, MatDialogModule, MatDrawer, MatExpansionModule,
+  MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDrawer, MatExpansionModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatMenuModule, MatPaginatorModule, MatRadioModule, MatSelectModule,
+  MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatRadioModule, MatSelectModule,
   MatSidenavModule, MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -33,9 +33,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatBadgeModule,
     MatRadioModule,
     MatExpansionModule,
+    MatDatepickerModule,
     CdkTableModule,
     FlexLayoutModule,
     MatMenuModule,
+    MatNativeDateModule,
   ],
   exports: [
     MatButtonModule,
@@ -57,6 +59,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FlexLayoutModule,
     MatPaginatorModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class CustomStyleModule { }

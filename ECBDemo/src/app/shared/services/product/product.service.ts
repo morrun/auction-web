@@ -23,4 +23,7 @@ export class ProductService {
   getProductsById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.AUTH_API_URL}/products/${id}`);
   }
+  addProduct( product: Product): Observable<number> {
+    return this.http.post<number>(`${this.AUTH_API_URL}/products`, product);
+  }
 }

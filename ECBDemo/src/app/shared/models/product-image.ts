@@ -1,5 +1,5 @@
 export class ProductImage {
   id?: number;
-  image: Blob;
+  image: string;
   productId: number;
 }

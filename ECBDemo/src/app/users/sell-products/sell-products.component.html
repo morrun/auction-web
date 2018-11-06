@@ -1,4 +1,4 @@
-<div class="container-fluid" style="min-height: 600px">
+<div class="container-fluid" style="min-height: 600px;margin-left:25%;margin-top: 100px;">
   <div *ngIf="currentFileUpload" class="progress">
     <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
@@ -11,5 +11,64 @@
   </label>
 
   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+
+<form class="example-form" [formGroup]="nestedReactiveForm" (ngSubmit)="onSubmit()">
+  <h3><p>Uploading Your Products</p></h3>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Input Your Title" id="title" name="title" formControlName="title" required>
+    <mat-error class="error-message" *ngIf="nestedReactiveForm.get('title').required && (nestedReactiveForm.get('title').dirty || nestedReactiveForm.get('title').touched)">
+      The products' title can't be empty!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Give A Brief Description For Your Products" id="description" name="description" formControlName="description"></textarea>
+    <mat-error class="error-message" *ngIf="nestedReactiveForm.get('description').maxLength && (nestedReactiveForm.get('description').dirty || nestedReactiveForm.get('description').touched)">
+      You can't input more than 500 words!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Please Set Price Of Product" id="price" name="price" formControlName="price" required>
+    <mat-error class="error-message" *ngIf="nestedReactiveForm.get('price').required && (nestedReactiveForm.get('price').dirty || nestedReactiveForm.get('price').touched)">
+      The products' price can't be empty!
+    </mat-error>
+  </mat-form-field>
+  <!--<mat-form-field class="example-full-width">-->
+    <!--<input matInput placeholder="Please Set Type Of Product" id="productTypeId" name="productTypeId" formControlName="productTypeId" required>-->
+    <!--<mat-error class="error-message" *ngIf="nestedReactiveForm.get('productTypeId').required && (nestedReactiveForm.get('productTypeId').dirty || nestedReactiveForm.get('productTypeId').touched)">-->
+      <!--The products' productTypeId can't be empty!-->
+    <!--</mat-error>-->
+  <!--</mat-form-field>-->
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Type" id="productTypeId" name="productTypeId" formControlName="productTypeId">
+      <mat-option *ngFor="let pt of productType" [value]="pt.id">
+        {{pt.type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <label>Sell Or Auction  </label>
+    <mat-radio-group formControlName="type">
+      <mat-radio-button value="SELL">Sell</mat-radio-button>
+      <mat-radio-button value="AUCTION">Auction</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a deadline of your product" id="deadline" name="deadline" formControlName="deadline">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!--<div class="example-full-width">-->
+  <!--<input type="file" placeholder="Please Upload Product images" id="image" name="image" formControlName="image" (change)="fileuploads($event)" multiple>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<span *ngFor="let image of this.nestedReactiveForm.controls['image'].controls">-->
+      <!--<img [src]="image.value" style="width: 50px;height:50px; border-radius: 50%;">-->
+    <!--</span>-->
+  <!--</div>-->
+  <button mat-raised-button color="accent" type="submit">Submit</button>
+</form>
+
 </div>
 

@@ -72,8 +72,8 @@ export class ProductsComponent implements OnInit {
   onPageChanged(e) {
     let firstCut = e.pageIndex * e.pageSize;
     let secondCut = firstCut + e.pageSize;
-    if (this.products == undefined || this.products == null) {return;}
-    this.activePageDataChunk = this.products.slice(firstCut, secondCut);
+    if (this.products == undefined || this.products == null) {return; }
+    this.activePageDataChunk = this.showProducts.slice(firstCut, secondCut);
   }
   changeView() {
     if (!this.selectedValue || this.selectedValue === 'All'){

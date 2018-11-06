@@ -4,5 +4,5 @@ export class Product {
   description: string;
   productTypeId: number;
   price: number;
-  deadline: Date;
+  deadline: String;
 }

@@ -34,9 +34,13 @@ public class ProductController {
 	public List<Product> getProductsByID(@RequestBody List<Integer> ids){ 
 		return productServiceImpl.getProductsById(ids);
 	}
+//	@PostMapping("/products")
+//	public Response addProduct(@RequestBody Product p) {
+//		return productServiceImpl.addProduct(p);
+//	}
 	@PostMapping("/products")
-	public Response addProduct(@RequestBody Product p) {
-		return productServiceImpl.addProduct(p);
+	public int addProductAndGetId(@RequestBody Product p) {
+		return productServiceImpl.addProductAndGetId(p);
 	}
 	@GetMapping("/products/type/{id}")
 	public List<Product> getProductByTypeId(@PathVariable("id") int id) {

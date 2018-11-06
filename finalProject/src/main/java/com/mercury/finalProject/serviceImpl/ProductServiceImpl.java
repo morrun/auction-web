@@ -1,5 +1,7 @@
 package com.mercury.finalProject.serviceImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,20 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getByProductId(int id) {
 		return productDao.findById(id);
+	}
+	@Override
+	public int addProductAndGetId(Product p) {
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+//		String deadline = p.getDeadline().getYear() + "/"+p.getDeadline().getMonth() + "/" + p.getDeadline().getDate();
+//		try {
+//			p.setDeadline(sdf.parse(deadline));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		productDao.save(p);
+		
+		return productDao.findByTitleAndDescription(p.getTitle(), p.getDescription()).getId();
 	}
 
 }

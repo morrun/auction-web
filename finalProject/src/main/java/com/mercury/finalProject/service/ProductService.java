@@ -14,4 +14,5 @@ public interface ProductService {
 	public Response addProduct(Product p);
 	public List<Product> getProductsByTypeId(int id);
 	public Product getByProductId(int id);
+	public int addProductAndGetId(Product p);
 }

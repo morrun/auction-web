@@ -21,6 +21,7 @@ import { CounterofferProductsComponent } from './products/counteroffer-products/
 import { AuctionProductsComponent } from './products/auction-products/auction-products.component';
 import { ProductsDetailComponent } from './products/products-detail/products-detail.component';
 import { SellProductsComponent } from './users/sell-products/sell-products.component';
+import { ProductImagePipe } from './shared/pipes/product-image.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SellProductsComponent } from './users/sell-products/sell-products.compo
     AuctionProductsComponent,
     ProductsDetailComponent,
     SellProductsComponent,
+    ProductImagePipe,
   ],
   imports: [
     BrowserModule,

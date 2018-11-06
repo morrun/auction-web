@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Product} from '../shared/models/product';
 import {ProductService} from '../shared/services/product/product.service';
 import {FormControl} from '@angular/forms';
@@ -7,11 +7,14 @@ import {ProductType} from '../shared/models/product-type';
 import {ProductS} from '../shared/models/product-s';
 import {ShelvesProduct} from '../shared/models/shelves-product';
 import {OnShelvesService} from '../shared/services/Shelves/on-shelves.service';
+import {ProductImage} from '../shared/models/product-image';
+import {ProductImageService} from '../shared/services/product/product-image.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent implements OnInit {
   // The properites belwo is used for filter
@@ -25,7 +28,7 @@ export class ProductsComponent implements OnInit {
   shelvesP: ShelvesProduct[];
 
   productTypes: ProductType[];
-
+  productImage: ProductImage[];
 
   // MatPaginator Inputs
   length:number;
@@ -37,7 +40,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private ps: ProductService,
     private pts: ProductTypeService,
-    private oss: OnShelvesService
+    private oss: OnShelvesService,
+    private pis: ProductImageService
   ) { }
 
   ngOnInit() {
@@ -47,6 +51,9 @@ export class ProductsComponent implements OnInit {
     //     this.length = res.length;
     //     this.activePageDataChunk = this.products.slice(0, this.pageSize);
     //   });
+    this.pis.getAllImage().subscribe( res => {
+      this.productImage = res;
+    });
     this.pts.getAllProductTypes()
       .subscribe( res => {
         this.productTypes = res;

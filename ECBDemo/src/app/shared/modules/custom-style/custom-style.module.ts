@@ -8,7 +8,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatRadioModule, MatSelectModule,
-  MatSidenavModule, MatTableModule,
+  MatSidenavModule, MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -38,6 +38,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FlexLayoutModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatTabsModule,
   ],
   exports: [
     MatButtonModule,
@@ -61,6 +62,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
   ]
 })
 export class CustomStyleModule { }

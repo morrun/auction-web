@@ -50,9 +50,13 @@
 
         <!--<mat-form-field>-->
           <mat-panel-description>
-            <img src="" alt="" style="width: 30%;height:150px">
-            <p style="display: inline-block">Description: {{product.description}}</p>
+              <mat-tab-group>
+                <mat-tab  class="mat-tab-label" *ngFor="let pitem of product.id | productImage: productImage" label="^">
+                  <img [src]="pitem.image" style="width: 100%;height:100%">
+                </mat-tab>
+              </mat-tab-group>
 
+            <p style="display: inline-block">Description: {{product.description}}</p>
           </mat-panel-description>
         <mat-panel-description style="width: 40%;text-align: left">
 

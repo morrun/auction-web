@@ -30,5 +30,10 @@ public class ProductImageServiceImpl implements ProductImageService {
 		// TODO Auto-generated method stub
 		return pio.findByProductId(id);
 	}
+	@Override
+	public List<ProductImage> getProductImagesByProductList(List<Integer> ids) {
+		// TODO Auto-generated method stub
+		return pio.findByProductIdIn(ids);
+	}
 
 }

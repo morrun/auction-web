@@ -13,4 +13,5 @@ public interface UserDetailService {
 	public Response updateUserDetail(UserDetail ud);
 	public UserDetail findByUserId(int id);
 	public Response saveUserHeadIcon(MultipartFile file,int id);
+	public List<UserDetail> getUserDetailByIdList(List<Integer> ids);
 }

@@ -49,7 +49,6 @@ export class SellProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authS.checkLogin();
     this.authS.userSubject.subscribe( res => {
       if (res) {
         this.userId = res.id;
@@ -105,7 +104,6 @@ onSubmit() {
     // product.deadline = time;
     if (this.selectedFiles){
       this.ps.addProduct( product).subscribe( res => {
-        console.log(res);
         this.productId = res;
         this.shelveProduct.productId = this.productId;
         this.upload();

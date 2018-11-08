@@ -52,5 +52,10 @@ public class UserDetailServiceImpl implements UserDetailService {
 		s3s.uploadFile(inAwsName, file);
 		return new Response(true);
 	}
+	@Override
+	public List<UserDetail> getUserDetailByIdList(List<Integer> ids) {
+		// TODO Auto-generated method stub
+		return userDetailDao.findByUserIdIn(ids);
+	}
 
 }

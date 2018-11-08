@@ -21,4 +21,7 @@ export class OnShelvesService {
   addShelvesProduct(shelveProduct: ShelvesProduct): Observable<{success: boolean}> {
     return this.http.post<{success: boolean}>( `${this.AUTH_API_URL}/shelvesProducts`, shelveProduct);
   }
+  getShelvesByUserId(id: number): Observable<ShelvesProduct[]> {
+    return this.http.get<ShelvesProduct[]>(`${this.AUTH_API_URL}/shelvesProducts/user/${id}`);
+  }
 }

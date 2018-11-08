@@ -24,6 +24,13 @@ import { SellProductsComponent } from './users/sell-products/sell-products.compo
 import { ProductImagePipe } from './shared/pipes/product-image.pipe';
 import { DialogForProductComponent } from './products/products-detail/dialog-for-product/dialog-for-product.component';
 import { ViewMyProductComponent } from './users/view-my-product/view-my-product.component';
+import { OnSaleProductsComponent } from './users/view-my-product/on-sale-products/on-sale-products.component';
+import { ProductViewPipe } from './shared/pipes/productView/product-view.pipe';
+import { WantToBuyComponent } from './users/view-my-product/want-to-buy/want-to-buy.component';
+import { UserIdPipe } from './shared/pipes/userId/user-id.pipe';
+import { EmailTransPipe } from './shared/pipes/userId/email-trans.pipe';
+import { ProductIdToTitlePipe } from './shared/pipes/product/product-id-to-title.pipe';
+import {ModifyMyProductComponent} from './users/view-my-product/on-sale-products/modify-my-product/modify-my-product.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +52,13 @@ import { ViewMyProductComponent } from './users/view-my-product/view-my-product.
     ProductImagePipe,
     DialogForProductComponent,
     ViewMyProductComponent,
+    OnSaleProductsComponent,
+    ProductViewPipe,
+    WantToBuyComponent,
+    UserIdPipe,
+    EmailTransPipe,
+    ProductIdToTitlePipe,
+    ModifyMyProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +71,6 @@ import { ViewMyProductComponent } from './users/view-my-product/view-my-product.
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DialogForProductComponent]
+  entryComponents: [ModifyMyProductComponent, DialogForProductComponent]
 })
 export class AppModule { }

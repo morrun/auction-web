@@ -58,7 +58,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
     this.oss.getShelvesByProductId(this.id)
       .subscribe( res => {
         this.shelveProduct = res;
-        if (this.shelveProduct.shelves.type === 'SELL'){
+        if (this.shelveProduct && this.shelveProduct.shelves.type === 'SELL'){
           this.show = true;
         }
       });

@@ -8,4 +8,5 @@ import com.mercury.finalProject.bean.ProductImage;
 
 public interface ProductImageDao extends JpaRepository<ProductImage, Integer> {
 	public List<ProductImage> findByProductId(Integer id);
+	public List<ProductImage> findByProductIdIn(List<Integer> productId);
 }

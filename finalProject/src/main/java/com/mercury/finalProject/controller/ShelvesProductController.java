@@ -33,4 +33,8 @@ public class ShelvesProductController {
 	public ShelvesProduct getShelvesProductsByProductId(@PathVariable int id) {
 		return sps.getShelvesProductById(id);
 	}
+	@GetMapping("/shelvesProducts/user/{id}")
+	public List<ShelvesProduct> getShelvesProductsByUserId(@PathVariable(name = "id") int userId) {
+		return sps.getShelvesProductByUserId(userId);
+	}
 }

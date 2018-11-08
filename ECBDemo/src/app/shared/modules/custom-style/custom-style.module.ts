@@ -13,6 +13,7 @@ import {
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatMenuModule,
     MatNativeDateModule,
     MatTabsModule,
+    NgbModule,
   ],
   exports: [
     MatButtonModule,
@@ -63,6 +65,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    NgbModule,
   ]
 })
 export class CustomStyleModule { }

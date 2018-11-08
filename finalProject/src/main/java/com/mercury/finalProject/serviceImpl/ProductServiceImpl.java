@@ -65,5 +65,21 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productDao.findByTitleAndDescription(p.getTitle(), p.getDescription()).getId();
 	}
+	@Override
+	public Response updateProduct(int id, Product p) {
+		Product tmp = productDao.findById(id);
+		if (p.getDescription() != null && p.getDescription().length() != 0)
+		tmp.setDescription(p.getDescription());
+		if (p.getPrice() > 0)
+		tmp.setPrice(p.getPrice());
+		if (p.getProductTypeId() > 0)
+		tmp.setProductTypeId(p.getProductTypeId());
+		if (p.getDeadline() != null)
+		tmp.setDeadline(p.getDeadline());
+		if (p.getTitle() != null && p.getTitle().length() != 0)
+		tmp.setTitle(p.getTitle());
+		productDao.save(tmp);
+		return new Response(true);
+	}
 
 }

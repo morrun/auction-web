@@ -37,5 +37,15 @@ public class ShelvesProductServiceImpl implements ShelvesProductService {
 		// TODO Auto-generated method stub
 		return spd.findByProductId(id);
 	}
+	@Override
+	public List<ShelvesProduct> getShelvesProductByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return spd.findByUserId(userId);
+	}
+	@Override
+	public Response deleteShelvesProduct(ShelvesProduct p) {
+		spd.delete(p);
+		return new Response(true);
+	}
 
 }

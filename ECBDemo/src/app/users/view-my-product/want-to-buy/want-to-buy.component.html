@@ -1,0 +1,23 @@
+<div style="min-height: 600px">
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let ov of operationView">
+      <p>
+        The price {{ov.nowPrice | currency: 'USD'}} you give to user {{ov.sellerUserId | userId: useD | emailTrans}} for his/her product with title
+      <a [routerLink]="['/product-detail',ov.productId]">"{{ov.productId | productIdToTitle: product}}"</a>
+      was&nbsp;
+      </p>
+      <p *ngIf="ov.viewStatus === 1;else second" style="color:greenyellow;font-size: 20px">
+        ACCEPTED by him/her
+        <button mat-button color="accent"><mat-icon>visibility</mat-icon></button>
+      </p>
+          <ng-template #second>
+            <p *ngIf="ov.viewStatus === 2; else third" style="color:red;font-size: 20px">REJECTED by him/her
+            </p>
+          </ng-template>
+          <ng-template #third>
+            <p style="color: blue;font-size: 20px;">still WAITING his/her response.</p>
+          </ng-template>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

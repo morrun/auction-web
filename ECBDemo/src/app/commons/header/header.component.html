@@ -16,6 +16,7 @@
   <mat-menu #userProfile="matMenu">
     <button mat-menu-item routerLink="/user-info" (click)="sh.showHome = true;">User Info</button>
     <button mat-menu-item routerLink="/sell-products">Sell Products</button>
+    <button mat-menu-item routerLink="/view-my-product">My Products</button>
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
   <span [matMenuTriggerFor]="userProfile" mat-menu-item *ngIf="(authService.userSubject | async); else login">

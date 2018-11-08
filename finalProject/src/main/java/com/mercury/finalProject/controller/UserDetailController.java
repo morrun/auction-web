@@ -37,4 +37,8 @@ public class UserDetailController {
 	public UserDetail getUserDetailById(@PathVariable int id) {
 		return userDetailService.findByUserId(id);
 	}
+	@PostMapping("/userDetails")
+	public List<UserDetail> getUserDetailByUserIds(@RequestBody List<Integer> ids) {
+		return userDetailService.getUserDetailByIdList(ids);
+	}
 }

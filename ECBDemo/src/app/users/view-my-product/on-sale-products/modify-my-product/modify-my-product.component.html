@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Modify Your Product Information</h2>
+<div mat-dialog-content>
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+         aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%
+    </div>
+  </div>
+
+  <label class="btn btn-default"> Add More Pictures
+    <input type="file" (change)="selectFile($event)" multiple="multiple">
+    <span>{{result}}</span>
+  </label>
+
+  <form class="example-form" [formGroup]="nestedReactiveForm">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Input Your Title" id="title" name="title" formControlName="title">
+      <mat-error class="error-message" *ngIf="nestedReactiveForm.get('title').maxLength && (nestedReactiveForm.get('title').dirty || nestedReactiveForm.get('title').touched)">
+        You can't input more than 50 words!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Give A Brief Description For Your Products" id="description" name="description" formControlName="description"></textarea>
+      <mat-error class="error-message" *ngIf="nestedReactiveForm.get('description').maxLength && (nestedReactiveForm.get('description').dirty || nestedReactiveForm.get('description').touched)">
+        You can't input more than 500 words!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Please Set Price Of Product" id="price" name="price" formControlName="price">
+    </mat-form-field>
+    <!--<mat-form-field class="example-full-width">-->
+    <!--<input matInput placeholder="Please Set Type Of Product" id="productTypeId" name="productTypeId" formControlName="productTypeId" required>-->
+    <!--<mat-error class="error-message" *ngIf="nestedReactiveForm.get('productTypeId').required && (nestedReactiveForm.get('productTypeId').dirty || nestedReactiveForm.get('productTypeId').touched)">-->
+    <!--The products' productTypeId can't be empty!-->
+    <!--</mat-error>-->
+    <!--</mat-form-field>-->
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Type" id="productTypeId" name="productTypeId" formControlName="productTypeId">
+        <mat-option *ngFor="let pt of productType" [value]="pt.id">
+          {{pt.type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a deadline of your product" id="deadline" name="deadline" formControlName="deadline">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSubmit()" cdkFocusInitial>Ok</button>
+</div>

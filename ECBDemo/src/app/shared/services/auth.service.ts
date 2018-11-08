@@ -57,6 +57,9 @@ export class AuthService {
   getUserDetail(id: number): Observable<UserDetail> {
     return this.http.get<UserDetail>(`${this.AUTH_API_URL}/userDetails/${id}`);
   }
+  getUseDetailByUserIds(id: number[]): Observable<UserDetail[]> {
+    return this.http.post<UserDetail[]>(`${this.AUTH_API_URL}/userDetails`, id, {withCredentials: true});
+  }
   checkPassword(id: number, password: string): Observable<boolean> {
     return this.http.post<boolean>(`${this.AUTH_API_URL}/users/${id}`, password,{withCredentials: true});
   }

@@ -8,6 +8,7 @@ import {CounterofferProductsComponent} from './products/counteroffer-products/co
 import {AuctionProductsComponent} from './products/auction-products/auction-products.component';
 import {ProductsDetailComponent} from './products/products-detail/products-detail.component';
 import {SellProductsComponent} from './users/sell-products/sell-products.component';
+import {ViewMyProductComponent} from './users/view-my-product/view-my-product.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'sell-products',
     component: SellProductsComponent
+  },
+  {
+    path: 'view-my-product',
+    component: ViewMyProductComponent
   },
   {
     path: '',

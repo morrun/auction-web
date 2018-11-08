@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
-import {Observable} from 'rxjs';
+import {ObjectUnsubscribedError, Observable} from 'rxjs';
 import {Product} from '../../models/product';
 
 @Injectable({
@@ -25,5 +25,8 @@ export class ProductService {
   }
   addProduct( product: Product): Observable<number> {
     return this.http.post<number>(`${this.AUTH_API_URL}/products`, product);
+  }
+  updateProduct(id: number, product: Product): Observable<{success: boolean}> {
+    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/products/${id}`, product,{withCredentials: true});
   }
 }

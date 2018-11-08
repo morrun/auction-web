@@ -39,4 +39,10 @@ public class OperationViewServiceImpl implements OperationViewService {
 		return new Response(true);
 	}
 
+	@Override
+	public Response deleteByProductId(int productId) {
+		ovd.deleteByProductId(productId);
+		return new Response(true);
+	}
+
 }

@@ -42,7 +42,7 @@ export class WantToBuyComponent implements OnInit {
     });
   }
   loadOperationViews() {
-    this.operationViewService.getOperationViewBySellerUserId(this.user.id).subscribe( res => {
+    this.operationViewService.getOperationViewByBuyerUserId(this.user.id).subscribe( res => {
       this.operationView = res;
       this.operationView.map( ov => {
         this.pid.push(ov.productId);

@@ -34,12 +34,6 @@
       The products' price can't be empty!
     </mat-error>
   </mat-form-field>
-  <!--<mat-form-field class="example-full-width">-->
-    <!--<input matInput placeholder="Please Set Type Of Product" id="productTypeId" name="productTypeId" formControlName="productTypeId" required>-->
-    <!--<mat-error class="error-message" *ngIf="nestedReactiveForm.get('productTypeId').required && (nestedReactiveForm.get('productTypeId').dirty || nestedReactiveForm.get('productTypeId').touched)">-->
-      <!--The products' productTypeId can't be empty!-->
-    <!--</mat-error>-->
-  <!--</mat-form-field>-->
   <mat-form-field class="example-full-width">
     <mat-select placeholder="Type" id="productTypeId" name="productTypeId" formControlName="productTypeId">
       <mat-option *ngFor="let pt of productType" [value]="pt.id">

@@ -19,6 +19,9 @@ export class OperationViewService {
     return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/operationViews/seller`,opV, {withCredentials: true});
   }
   getOperationViewByBuyerUserId(id: number): Observable<OperationView[]> {
-    return this.http.get<OperationView[]>(`${this.AUTH_API_URL}/operationViews/seller/${id}`);
+    return this.http.get<OperationView[]>(`${this.AUTH_API_URL}/operationViews/buyer/${id}`);
+  }
+  deleteOperationViewByProductId(id: number): Observable<{success: boolean}> {
+    return this.http.delete<{success: boolean}>(`${this.AUTH_API_URL}/operationViews/${id}`);
   }
 }

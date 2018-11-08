@@ -3,6 +3,8 @@ package com.mercury.finalProject.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import com.mercury.finalProject.service.OperationViewService;
 
 @RestController
 @RequestMapping("/operationViews")
+@Transactional
 public class OperationViewController {
 	@Autowired
 	private OperationViewService ovs;
@@ -37,5 +40,9 @@ public class OperationViewController {
 	@PutMapping("/seller")
 	public Response updateOperationView(@RequestBody OperationView ov) {
 		return ovs.updateOperationView(ov);
+	}
+	@DeleteMapping("/{id}")
+	public Response deleteByProductId(@PathVariable(name="id") int productId) {
+		return ovs.deleteByProductId(productId);
 	}
 }

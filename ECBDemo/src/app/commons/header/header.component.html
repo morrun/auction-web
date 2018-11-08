@@ -1,4 +1,4 @@
-<mat-toolbar color="bluegreen">
+<mat-toolbar color="primary">
   <span>
     <a>iMORRUN e-commerce</a>
   </span>
@@ -13,13 +13,14 @@
   </span>
 
   <span class="example-fill-remaining-space"></span>
+  <a mat-button *ngIf="(authService.userSubject | async)">Admin</a>
   <mat-menu #userProfile="matMenu">
     <button mat-menu-item routerLink="/user-info" (click)="sh.showHome = true;">User Info</button>
     <button mat-menu-item routerLink="/sell-products">Sell Products</button>
     <button mat-menu-item routerLink="/view-my-product">My Products</button>
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
-  <span [matMenuTriggerFor]="userProfile" mat-menu-item *ngIf="(authService.userSubject | async); else login">
+  <span [matMenuTriggerFor]="userProfile" mat-menu-item *ngIf="(authService.userSubject | async); else login" style="color: white;">
     {{(authService.userSubject | async).username|usernamePipe}}
   </span>
   <ng-template #login>

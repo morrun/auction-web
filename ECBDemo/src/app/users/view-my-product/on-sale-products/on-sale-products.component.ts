@@ -20,7 +20,7 @@ import {MatDialog} from '@angular/material';
 })
 export class OnSaleProductsComponent implements OnInit {
   show = true;
-
+  empty = true;
   user: User;
   product: Product[];
   productImage: ProductImage[];
@@ -59,6 +59,9 @@ export class OnSaleProductsComponent implements OnInit {
   loadShelvesProduct() {
     this.onShelveService.getShelvesByUserId(this.user.id).subscribe( res => {
       this.shelvesProduct = res;
+      if (res.length === 0) {
+        this.empty = false;
+      }
       this.shelvesProduct.map( sp => {
         this.pid.push(sp.productId);
       });

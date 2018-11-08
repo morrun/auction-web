@@ -1,0 +1,35 @@
+<div style="min-height: 600px">
+  <ngb-accordion [closeOthers]="true" activeIds="ngb-panel-0">
+    <ngb-panel *ngFor="let p of product" title="{{p.title}} price: {{p.price|currency:'USD'}}">
+      <ng-template ngbPanelContent>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <!--<div mat-card-avatar class="example-header-image"></div>-->
+            <mat-card-title>{{p.title}}</mat-card-title>
+            <mat-card-subtitle>{{p.price|currency: 'USD'}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>&nbsp; &nbsp;{{p.description}}</p>
+            <mat-card-title  *ngFor="let pv of p.id | soldProduct: operationView">
+              &nbsp; &nbsp;&nbsp; Your product was bought by {{pv.buyerUserName}} with the price of {{pv.nowPrice | currency: 'USD'}}
+            </mat-card-title>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="openDialog(p.id)">Reload</button>
+          </mat-card-actions>
+
+          <mat-card-actions>
+            <mat-label>
+
+            </mat-label>
+          </mat-card-actions>
+        </mat-card>
+        <mat-tab-group>
+          <mat-tab  class="mat-tab-label" *ngFor="let pitem of p.id | productImage: productImage" label="^">
+            <img [src]="pitem.image" style="height: 400px;width: 400px; margin-left: 30%;margin-top: 20px" >
+          </mat-tab>
+        </mat-tab-group>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>

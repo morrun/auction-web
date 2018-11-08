@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Are you sure to re-upload this product?</h1>
+<div>
+  <label>Sell Or Auction  </label>
+  <mat-radio-group [(ngModel)]="data.type">
+    <mat-radio-button value="SELL">Sell</mat-radio-button>
+    <mat-radio-button value="AUCTION">Auction</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="warn" (click)="codeChange()" [mat-dialog-close]="data" cdkFocusInitial>Reload</button>
+</div>

@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {OperationViewService} from '../../../shared/services/Operation/operation-view.service';
 import {AuthService} from '../../../shared/services/auth.service';
 import {ProductService} from '../../../shared/services/product/product.service';
-import {ProductImageService} from '../../../shared/services/product/product-image.service';
-import {OnShelvesService} from '../../../shared/services/Shelves/on-shelves.service';
+
 import {User} from '../../../shared/models/user';
-import {ShelvesProduct} from '../../../shared/models/shelves-product';
+
 import {OperationView} from '../../../shared/models/operation-view';
 import {Product} from '../../../shared/models/product';
-import {ProductImage} from '../../../shared/models/product-image';
+
 import {UserDetail} from '../../../shared/models/user-detail';
+import {MatDialog} from '@angular/material';
+import {AfterAcceptPriceComponent} from './after-accept-price/after-accept-price.component';
 
 @Component({
   selector: 'app-want-to-buy',
@@ -29,6 +30,7 @@ export class WantToBuyComponent implements OnInit {
     private productService: ProductService,
     private operationViewService: OperationViewService,
     private authService: AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -58,6 +60,17 @@ export class WantToBuyComponent implements OnInit {
   loadUserDetailView() {
     this.authService.getUseDetailByUserIds(this.uid).subscribe( res => {
       this.useD  = res;
+    });
+  }
+  openDialog(sellerUserId: number): void {
+    const dialogRef = this.dialog.open(AfterAcceptPriceComponent, {
+      minWidth: '500px',
+      data: {sellerUserId: sellerUserId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // location.reload();
     });
   }
 }

@@ -1,4 +1,5 @@
 <div class="container-fluid" style="min-height: 600px;margin-left:25%;margin-top: 100px;">
+  <h3><p>Upload Your Products</p></h3>
   <div *ngIf="currentFileUpload" class="progress">
     <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
@@ -13,7 +14,7 @@
   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
 
 <form class="example-form" [formGroup]="nestedReactiveForm" (ngSubmit)="onSubmit()">
-  <h3><p>Uploading Your Products</p></h3>
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Input Your Title" id="title" name="title" formControlName="title" required>
     <mat-error class="error-message" *ngIf="nestedReactiveForm.get('title').required && (nestedReactiveForm.get('title').dirty || nestedReactiveForm.get('title').touched)">

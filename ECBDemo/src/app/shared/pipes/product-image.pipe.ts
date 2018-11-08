@@ -7,7 +7,7 @@ import {ProductImage} from '../models/product-image';
 export class ProductImagePipe implements PipeTransform {
 
   transform(id: number, productImage: ProductImage[]): any {
-    const result = productImage.filter( pi => {
+    const result = (productImage || []).filter( pi => {
       return pi.productId === id;
     });
     return result;

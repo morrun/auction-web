@@ -1,6 +1,7 @@
 package com.mercury.finalProject.controller;
 
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,9 @@ public class ProductImageController {
 		ProductImage pi = new ProductImage(temName,id);
 		pis.addProductImages(pi);
 		List<ProductImage> images = pis.getAllImagesByProductId(id);
+		Collections.sort(images, (i1,i2) -> {
+			return i1.getId() - i2.getId();
+		}); 
 		pi = images.get(images.size() - 1);
 		int imageId = pi.getId();
 		

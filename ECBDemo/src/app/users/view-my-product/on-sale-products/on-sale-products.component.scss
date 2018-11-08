@@ -41,4 +41,25 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+.mat-tab-label {
+  max-width: 15px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: green;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  max-width: 15px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: green;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}
 

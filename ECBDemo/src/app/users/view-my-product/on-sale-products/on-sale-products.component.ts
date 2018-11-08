@@ -50,7 +50,10 @@ export class OnSaleProductsComponent implements OnInit {
   }
   loadOperationViews() {
     this.operationViewService.getOperationViewBySellerUserId(this.user.id).subscribe( res => {
-      this.operationView = res;
+      if (res) {
+        this.operationView = (res || []);
+      }
+
     });
   }
   loadShelvesProduct() {

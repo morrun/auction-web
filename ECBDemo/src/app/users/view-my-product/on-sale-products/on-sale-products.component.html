@@ -15,13 +15,18 @@
             <mat-card-actions>
               <button mat-raised-button color="accent" (click)="openDialog(p)">Modify product</button>
             </mat-card-actions>
+
             <mat-card-actions  *ngFor="let pv of p.id | productView: operationView">
               <mat-label matBadge="{{pv.viewStatus === 0 ? 1: null}}" matBadgeColor="accent" matBadgePosition="before">&nbsp; &nbsp;&nbsp;{{pv.buyerUserName}} wants to buy your product with the price of {{pv.nowPrice | currency: 'USD'}} </mat-label>
               <button mat-raised-button color="warn" *ngIf="show" (click)="accept(pv)">ACCEPT</button>
               <button mat-button color="warn" *ngIf="show" (click)="reject(pv)">REJECT</button>
             </mat-card-actions>
-
           </mat-card>
+       <mat-tab-group>
+        <mat-tab  class="mat-tab-label" *ngFor="let pitem of p.id | productImage: productImage" label="^">
+          <img [src]="pitem.image" style="height: 400px;width: 400px; margin-left: 30%;margin-top: 20px" >
+        </mat-tab>
+      </mat-tab-group>
           <!--<div >-->
             <!--<mat-tab-group >-->
               <!--<mat-tab  class="mat-tab-label" *ngFor="let pitem of p.id | productImage: productImage" label="^">-->

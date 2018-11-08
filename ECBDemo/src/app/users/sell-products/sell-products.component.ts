@@ -72,7 +72,7 @@ export class SellProductsComponent implements OnInit {
   upload() {
     this.progress.percentage = 0;
     for (let i = 0;i < this.selectedFiles.length; i ++) {
-      this.currentFileUpload = this.selectedFiles.item(0);
+      this.currentFileUpload = this.selectedFiles.item(i);
       this.uploadService.pushFileToStorage(this.currentFileUpload, this.productId ).subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress.percentage = Math.round(100 * event.loaded / event.total);

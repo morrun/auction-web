@@ -8,7 +8,7 @@
       </p>
       <p *ngIf="ov.viewStatus === 1;else second" style="color:greenyellow;font-size: 20px">
         ACCEPTED by him/her
-        <button mat-button color="accent"><mat-icon>visibility</mat-icon></button>
+        <button mat-button color="accent" (click)="openDialog(ov.sellerUserId)"><mat-icon>visibility</mat-icon></button>
       </p>
           <ng-template #second>
             <p *ngIf="ov.viewStatus === 2; else third" style="color:red;font-size: 20px">REJECTED by him/her

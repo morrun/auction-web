@@ -31,6 +31,7 @@ import { UserIdPipe } from './shared/pipes/userId/user-id.pipe';
 import { EmailTransPipe } from './shared/pipes/userId/email-trans.pipe';
 import { ProductIdToTitlePipe } from './shared/pipes/product/product-id-to-title.pipe';
 import {ModifyMyProductComponent} from './users/view-my-product/on-sale-products/modify-my-product/modify-my-product.component';
+import { AfterAcceptPriceComponent } from './users/view-my-product/want-to-buy/after-accept-price/after-accept-price.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {ModifyMyProductComponent} from './users/view-my-product/on-sale-products
     EmailTransPipe,
     ProductIdToTitlePipe,
     ModifyMyProductComponent,
+    AfterAcceptPriceComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,6 @@ import {ModifyMyProductComponent} from './users/view-my-product/on-sale-products
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModifyMyProductComponent, DialogForProductComponent]
+  entryComponents: [AfterAcceptPriceComponent,ModifyMyProductComponent, DialogForProductComponent]
 })
 export class AppModule { }

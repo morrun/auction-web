@@ -8,4 +8,5 @@ import com.mercury.finalProject.bean.OperationsHistory;
 
 public interface OperationsHistoryDao extends JpaRepository<OperationsHistory, Integer> {
 	List<OperationsHistory> findByProductId(int productId);
+	void deleteAllByProductId(int productId);
 }

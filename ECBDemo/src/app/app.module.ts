@@ -35,7 +35,6 @@ import { AfterAcceptPriceComponent } from './users/view-my-product/want-to-buy/a
 import { SoldProductComponent } from './users/view-my-product/sold-product/sold-product.component';
 import { SoldProductPipe } from './shared/pipes/productView/sold-product.pipe';
 import { ReloadDialogComponent } from './users/view-my-product/sold-product/reload-dialog/reload-dialog.component';
-import { UserRolePipe } from './shared/pipes/user/user-role.pipe';
 
 @NgModule({
   declarations: [
@@ -68,7 +67,6 @@ import { UserRolePipe } from './shared/pipes/user/user-role.pipe';
     SoldProductComponent,
     SoldProductPipe,
     ReloadDialogComponent,
-    UserRolePipe,
   ],
   imports: [
     BrowserModule,

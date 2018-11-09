@@ -19,4 +19,7 @@ export class BidOrBuyService {
   getOperationsHistoryByProductId(id: number): Observable<OperationHistory[]> {
     return this.http.get<OperationHistory[]>(`${this.AUTH_API_URL}/operationsHistory/${id}`);
   }
+  deleteOperationsHistoryByProductId( id: number): Observable<{success: boolean}> {
+    return this.http.delete<{ success: boolean}>(`${this.AUTH_API_URL}/operationsHistory/${id}`);
+  }
 }

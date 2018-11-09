@@ -13,6 +13,7 @@ import {ProductImageService} from '../../../shared/services/product/product-imag
 import {ReloadDialogComponent} from './reload-dialog/reload-dialog.component';
 import {Shelves} from '../../../shared/models/shelves';
 import {DialogReloadProduct} from '../../../shared/models/dialog-reload-product';
+import {BidOrBuyService} from '../../../shared/services/Operation/bid-or-buy.service';
 
 @Component({
   selector: 'app-sold-product',
@@ -32,7 +33,8 @@ export class SoldProductComponent implements OnInit {
     private operationViewService: OperationViewService,
     private onShelveService: OnShelvesService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private bob: BidOrBuyService
   ) { }
 
   ngOnInit() {
@@ -79,6 +81,7 @@ export class SoldProductComponent implements OnInit {
       console.log('The dialog was closed');
       const dialogReload: DialogReloadProduct = result;
       if (dialogReload.code === 1) {
+        this.bob.deleteOperationsHistoryByProductId(id).subscribe();
         const shelvesProduct = new ShelvesProduct();
         shelvesProduct.productId = id;
         shelvesProduct.shelves = new Shelves();

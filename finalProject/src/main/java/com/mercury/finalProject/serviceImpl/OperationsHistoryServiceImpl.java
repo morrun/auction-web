@@ -11,6 +11,7 @@ import com.mercury.finalProject.bean.Operations;
 import com.mercury.finalProject.bean.OperationsHistory;
 import com.mercury.finalProject.dao.OperationsDao;
 import com.mercury.finalProject.dao.OperationsHistoryDao;
+import com.mercury.finalProject.http.Response;
 import com.mercury.finalProject.service.OperationsHistoryService;
 
 @Service
@@ -34,6 +35,11 @@ public class OperationsHistoryServiceImpl implements OperationsHistoryService {
 	public List<OperationsHistory> getAllOperationsHistroyByProductId(int productId) {
 		// TODO Auto-generated method stub
 		return ohd.findByProductId(productId);
+	}
+	@Override
+	public Response deleteByProductId(int productId) {
+		ohd.deleteAllByProductId(productId);
+		return new Response(true);
 	}
 
 }

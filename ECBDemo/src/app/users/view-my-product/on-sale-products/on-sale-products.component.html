@@ -16,14 +16,22 @@
             <mat-card-actions>
               <button mat-raised-button color="accent" (click)="openDialog(p)">Modify product</button>
             </mat-card-actions>
-
-            <mat-card-actions  *ngFor="let pv of p.id | productView: operationView">
-              <mat-label matBadge="{{pv.viewStatus === 0 ? 1: null}}" matBadgeColor="accent" matBadgePosition="before">&nbsp; &nbsp;&nbsp;
-                {{pv.buyerUserName}} wants to buy your product with the price of {{pv.nowPrice | currency: 'USD'}}
-              </mat-label>
-              <button mat-raised-button color="warn" *ngIf="pv.viewStatus === 0" (click)="accept(pv)">ACCEPT</button>
-              <button mat-button color="warn" *ngIf="pv.viewStatus === 0" (click)="reject(pv)">REJECT</button>
-            </mat-card-actions>
+            <div *ngFor="let pv of p.id | productView: operationView">
+              <mat-card-actions  *ngIf="pv.productId | productTOShelveType: shelvesProduct;else auction ">
+                <mat-label matBadge="{{pv.viewStatus === 0 ? 1: null}}" matBadgeColor="accent" matBadgePosition="before">&nbsp; &nbsp;&nbsp;
+                  {{pv.buyerUserName}} wants to buy your product with the price of {{pv.nowPrice | currency: 'USD'}}
+                </mat-label>
+                <button mat-raised-button color="warn" *ngIf="pv.viewStatus === 0" (click)="accept(pv)">ACCEPT</button>
+                <button mat-button color="warn" *ngIf="pv.viewStatus === 0" (click)="reject(pv)">REJECT</button>
+              </mat-card-actions>
+              <ng-template #auction>
+                <mat-label matBadge="{{pv.viewStatus === 0 ? 1: null}}" matBadgeColor="accent" matBadgePosition="before">&nbsp; &nbsp;&nbsp;
+                  {{pv.buyerUserName}} wants to buy your product with the price of {{pv.nowPrice | currency: 'USD'}}
+                </mat-label>
+                <button mat-raised-button color="warn" *ngIf="pv.viewStatus === 0" (click)="accept(pv)">ACCEPT</button>
+                <button mat-button color="warn" *ngIf="pv.viewStatus === 0" (click)="viewed(pv)">VIEWED</button>
+              </ng-template>
+            </div>
             <br/>
           </mat-card>
        <mat-tab-group>

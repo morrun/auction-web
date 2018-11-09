@@ -15,6 +15,7 @@ import {DialogForProductComponent} from './dialog-for-product/dialog-for-product
 import {MatDialog} from '@angular/material';
 import {OperationHistory} from '../../shared/models/operation-history';
 import {BidOrBuyService} from '../../shared/services/Operation/bid-or-buy.service';
+import {ShelvesProduct} from '../../shared/models/shelves-product';
 
 @Component({
   selector: 'app-products-detail',
@@ -26,7 +27,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   productImage: ProductImage[];
   show: boolean;
   productType: ProductType;
-  shelveProduct; ShelvesProduct;
+  shelveProduct: ShelvesProduct;
   id = 0;
   sub: Subscription;
   user: User;

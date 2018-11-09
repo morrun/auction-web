@@ -15,8 +15,11 @@
             </p>
           </ng-template>
           <ng-template #third>
-            <p style="color: blue;font-size: 20px;">still WAITING his/her response.</p>
+            <p *ngIf="ov.viewStatus === 0; else forth" style="color: blue;font-size: 20px;">still WAITING his/her response.</p>
           </ng-template>
+      <ng-template #forth>
+        <p *ngIf="ov.viewStatus === 3" style="color: slategray;font-size: 20px;">waiting for FINAL RESULT</p>
+      </ng-template>
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>

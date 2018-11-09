@@ -23,4 +23,7 @@ export class VisitHistoryService {
     vh.visitation.userId = userId;
     return this.http.post<{success: boolean}>(`${this.AUTH_API_URL}/visitHistory`, vh);
   }
+  deleteVisityHistoryByProductId(productId: number): Observable<{success: boolean}> {
+    return this.http.delete<{success: boolean}>(`${this.AUTH_API_URL}/visitHistory/${productId}`);
+  }
 }

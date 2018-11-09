@@ -30,7 +30,7 @@
       </div>
       <div class="product-detail-info-cart-button-container" *ngIf="show; else auction;">
         <span>
-          <button class="btn-block btn-primary btn" (click)="negotiate()">Negotiate</button>
+          <button class="btn-block btn-primary btn" [disabled]="shelveProduct" (click)="negotiate()">Negotiate</button>
         </span>
       </div>
       <ng-template #auction>
@@ -39,7 +39,7 @@
             Highest Price So Far: {{operationH[0].price | currency: 'USD'}}
           </div>
         <span>
-          <button class="btn-block btn-primary btn" (click)="bidding()">Bidding</button>
+          <button class="btn-block btn-primary btn" [disabled]="!shelveProduct" (click)="bidding()">Bidding</button>
         </span>
           <br/>
           <mat-accordion *ngIf="operationH[0]">

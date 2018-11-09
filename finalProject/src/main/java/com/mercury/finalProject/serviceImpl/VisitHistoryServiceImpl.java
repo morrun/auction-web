@@ -27,5 +27,10 @@ public class VisitHistoryServiceImpl implements VisitHistoryService {
 		vhd.save(v);
 		return new Response(true);
 	}
+	@Override
+	public Response deleteVisitHistoryByProductId(int productId) {
+		vhd.deleteAllByProductId(productId);
+		return new Response(true);
+	}
 
 }

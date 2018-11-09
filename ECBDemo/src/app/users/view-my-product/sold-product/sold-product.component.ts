@@ -14,6 +14,7 @@ import {ReloadDialogComponent} from './reload-dialog/reload-dialog.component';
 import {Shelves} from '../../../shared/models/shelves';
 import {DialogReloadProduct} from '../../../shared/models/dialog-reload-product';
 import {BidOrBuyService} from '../../../shared/services/Operation/bid-or-buy.service';
+import {VisitHistoryService} from '../../../shared/services/Operation/visit-history.service';
 
 @Component({
   selector: 'app-sold-product',
@@ -34,7 +35,8 @@ export class SoldProductComponent implements OnInit {
     private onShelveService: OnShelvesService,
     private authService: AuthService,
     public dialog: MatDialog,
-    private bob: BidOrBuyService
+    private bob: BidOrBuyService,
+    private vhs: VisitHistoryService
   ) { }
 
   ngOnInit() {
@@ -82,6 +84,7 @@ export class SoldProductComponent implements OnInit {
       const dialogReload: DialogReloadProduct = result;
       if (dialogReload.code === 1) {
         this.bob.deleteOperationsHistoryByProductId(id).subscribe();
+        this.vhs.deleteVisityHistoryByProductId(id).subscribe();
         const shelvesProduct = new ShelvesProduct();
         shelvesProduct.productId = id;
         shelvesProduct.shelves = new Shelves();

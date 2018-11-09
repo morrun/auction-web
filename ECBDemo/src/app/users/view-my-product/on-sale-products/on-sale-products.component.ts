@@ -90,6 +90,10 @@ export class OnSaleProductsComponent implements OnInit {
     this.show = false;
     this.operationViewService.upadateOperationView(opV).subscribe();
   }
+  viewed(opV: OperationView) {
+    opV.viewStatus = 3;
+    this.operationViewService.upadateOperationView(opV).subscribe();
+  }
   openDialog(productTem: Product): void {
     const dialogRef = this.dialog.open(ModifyMyProductComponent, {
       minWidth: '500px',

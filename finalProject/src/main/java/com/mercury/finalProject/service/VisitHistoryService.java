@@ -8,4 +8,5 @@ import com.mercury.finalProject.http.Response;
 public interface VisitHistoryService {
 	public List<VisitHistory> getAllVisitHistory();
 	public Response addVisitHistory(VisitHistory v);
+	public Response deleteVisitHistoryByProductId(int productId);
 }

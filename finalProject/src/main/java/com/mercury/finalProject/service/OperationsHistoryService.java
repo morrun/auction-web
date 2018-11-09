@@ -7,4 +7,5 @@ import com.mercury.finalProject.bean.OperationsHistory;
 public interface OperationsHistoryService {
 	public List<OperationsHistory> getAllOperationsHistory();
 	public void addOperationsHistoryService(OperationsHistory oh);
+	public List<OperationsHistory> getAllOperationsHistroyByProductId(int productId);
 }

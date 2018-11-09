@@ -13,6 +13,8 @@ import {VisitHistoryService} from '../../shared/services/Operation/visit-history
 import {ProductImageService} from '../../shared/services/product/product-image.service';
 import {DialogForProductComponent} from './dialog-for-product/dialog-for-product.component';
 import {MatDialog} from '@angular/material';
+import {OperationHistory} from '../../shared/models/operation-history';
+import {BidOrBuyService} from '../../shared/services/Operation/bid-or-buy.service';
 
 @Component({
   selector: 'app-products-detail',
@@ -28,6 +30,7 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
   id = 0;
   sub: Subscription;
   user: User;
+  operationH: OperationHistory[] = [];
   constructor(
     ar: ActivatedRoute,
     private ps: ProductService,
@@ -37,7 +40,8 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
     private authS: AuthService,
     private visitHS: VisitHistoryService,
     private pis: ProductImageService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private bob: BidOrBuyService
   ) {
     // this.id = +ar.snapshot.paramMap.get('id');
     this.sub = ar.paramMap
@@ -54,6 +58,12 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
                 this.productType = res;
               });
           });
+        this.bob.getOperationsHistoryByProductId(this.id).subscribe( res => {
+          this.operationH = res;
+          this.operationH.sort( (oh1, oh2) => {
+            return oh2.price - oh1.price;
+          });
+        });
       });
     this.oss.getShelvesByProductId(this.id)
       .subscribe( res => {

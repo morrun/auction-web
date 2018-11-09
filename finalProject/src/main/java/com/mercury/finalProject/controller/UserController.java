@@ -45,7 +45,6 @@ public class UserController {
 	}
 	@PutMapping("/users/{id}")
 	public Response updateUser(@Valid @RequestBody User user, Authentication authentication) {
-		System.out.println(authentication);
 		return userService.updateUser(user, authentication);
 	}
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")

@@ -30,5 +30,10 @@ public class OperationsHistoryServiceImpl implements OperationsHistoryService {
 		ohd.save(oh);
 
 	}
+	@Override
+	public List<OperationsHistory> getAllOperationsHistroyByProductId(int productId) {
+		// TODO Auto-generated method stub
+		return ohd.findByProductId(productId);
+	}
 
 }

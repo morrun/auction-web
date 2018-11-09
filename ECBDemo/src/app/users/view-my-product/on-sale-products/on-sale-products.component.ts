@@ -81,6 +81,7 @@ export class OnSaleProductsComponent implements OnInit {
   }
   accept(opV: OperationView) {
     opV.viewStatus = 1;
+
     this.show = false;
     this.operationViewService.upadateOperationView(opV).subscribe();
   }

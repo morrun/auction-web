@@ -16,4 +16,7 @@ export class BidOrBuyService {
   addOperationService(oh: OperationHistory): Observable<any> {
     return this.http.post<any>(`${this.AUTH_API_URL}/operationsHistory`, oh);
   }
+  getOperationsHistoryByProductId(id: number): Observable<OperationHistory[]> {
+    return this.http.get<OperationHistory[]>(`${this.AUTH_API_URL}/operationsHistory/${id}`);
+  }
 }

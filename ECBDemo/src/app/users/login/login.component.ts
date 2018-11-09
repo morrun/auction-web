@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         if (res.success) {
           // console.log(res.user.authorities[0].type);
-          this.router.navigate(['/products']);
+          this.router.navigate(['/products']).then( () => {
+          });
+
         } else {
           this.err = true;
         }

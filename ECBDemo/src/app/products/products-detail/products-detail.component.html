@@ -10,7 +10,6 @@
             <img [src]="pitem.image" style="height: 90%;width: 90%" >
           </mat-tab>
         </mat-tab-group>
-        <!--<img src="{{product.image}}" class="product-detail-image">-->
       </div>
     </div>
     <div class="col-sm-3 product-detail-info-container">
@@ -36,9 +35,25 @@
       </div>
       <ng-template #auction>
         <div class="product-detail-info-cart-button-container">
+          <div class="product-detail-info-bid-price" *ngIf="operationH[0]">
+            Highest Price So Far: {{operationH[0].price | currency: 'USD'}}
+          </div>
         <span>
           <button class="btn-block btn-primary btn" (click)="bidding()">Bidding</button>
         </span>
+          <br/>
+          <mat-accordion *ngIf="operationH[0]">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  View Biding History
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="product-detail-info-brand" style="color: darkcyan" *ngFor="let oh of operationH">
+                User *** gave this price: {{oh.price | currency: 'USD'}}
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
       </ng-template>
     </div>

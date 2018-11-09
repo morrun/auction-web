@@ -11,6 +11,7 @@ import {AuthService} from '../../../shared/services/auth.service';
 import {OperationView} from '../../../shared/models/operation-view';
 import {ModifyMyProductComponent} from './modify-my-product/modify-my-product.component';
 import {MatDialog} from '@angular/material';
+import {VisitHistoryService} from '../../../shared/services/Operation/visit-history.service';
 
 @Component({
   selector: 'app-on-sale-products',
@@ -34,7 +35,8 @@ export class OnSaleProductsComponent implements OnInit {
     private operationViewService: OperationViewService,
     private onShelveService: OnShelvesService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private vhs: VisitHistoryService
   ) { }
 
   ngOnInit() {
@@ -81,7 +83,7 @@ export class OnSaleProductsComponent implements OnInit {
   }
   accept(opV: OperationView) {
     opV.viewStatus = 1;
-
+    this.vhs.deleteVisityHistoryByProductId(opV.productId).subscribe();
     this.show = false;
     this.operationViewService.upadateOperationView(opV).subscribe();
   }

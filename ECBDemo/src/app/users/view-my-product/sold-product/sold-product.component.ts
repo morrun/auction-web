@@ -35,8 +35,7 @@ export class SoldProductComponent implements OnInit {
     private onShelveService: OnShelvesService,
     private authService: AuthService,
     public dialog: MatDialog,
-    private bob: BidOrBuyService,
-    private vhs: VisitHistoryService
+    private bob: BidOrBuyService
   ) { }
 
   ngOnInit() {
@@ -84,7 +83,6 @@ export class SoldProductComponent implements OnInit {
       const dialogReload: DialogReloadProduct = result;
       if (dialogReload.code === 1) {
         this.bob.deleteOperationsHistoryByProductId(id).subscribe();
-        this.vhs.deleteVisityHistoryByProductId(id).subscribe();
         const shelvesProduct = new ShelvesProduct();
         shelvesProduct.productId = id;
         shelvesProduct.shelves = new Shelves();

@@ -2658,3 +2658,4 @@ javax.persistence.TransactionRequiredException: No EntityManager with actual tra
 2018-11-09 07:40:53.363  INFO 18696 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2018-11-09 07:40:53.364  INFO 18696 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2018-11-09 07:40:53.373  INFO 18696 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms
+2018-11-09 07:40:59.490  INFO 18696 --- [http-nio-8080-exec-6] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory

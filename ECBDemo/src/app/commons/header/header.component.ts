@@ -10,8 +10,6 @@ import {UserShowService} from '../../shared/services/user-show.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   show = false;
-  countS = 0;
-  countM = 0;
   isAdmin = false;
   constructor(
     public authService: AuthService,
@@ -28,16 +26,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
      this.isAdmin = res;
     });
     //this.cdr.detectChanges();
-  }
-  clickSell() {
-    if (this.countS < 10) {
-      this.countS ++;
-    }
-  }
-  clickMyProduct() {
-    if (this.countM < 10) {
-      this.countM ++;
-    }
   }
   ngOnDestroy() {
   }

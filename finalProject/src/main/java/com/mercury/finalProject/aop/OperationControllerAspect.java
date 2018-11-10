@@ -14,7 +14,7 @@ import com.mercury.finalProject.bean.Product;
 import com.mercury.finalProject.bean.ShelvesProduct;
 import com.mercury.finalProject.bean.User;
 import com.mercury.finalProject.bean.UserDetail;
-import com.mercury.finalProject.mail.EmailService;
+import com.mercury.finalProject.jms.EmailInfoProducer;
 import com.mercury.finalProject.service.OperationViewService;
 import com.mercury.finalProject.service.ProductService;
 import com.mercury.finalProject.service.ShelvesProductService;
@@ -25,8 +25,6 @@ import com.mercury.finalProject.serviceImpl.UserDetailServiceImpl;
 @Component
 public class OperationControllerAspect {
 	@Autowired
-	private EmailService eS;
-	@Autowired
 	private ShelvesProductService sps;
 	@Autowired
 	private ProductService productService;
@@ -36,7 +34,8 @@ public class OperationControllerAspect {
 	private OperationViewService ovs;
 	@Autowired
 	private UserDetailServiceImpl udsi;
-	
+	@Autowired
+	private EmailInfoProducer eip;
 	
 	@After("execution(* com.mercury.finalProject.controller.OperationViewController.updateOperationView(..))")
 	public void sendEmailToBuyerUser(JoinPoint joinPoint) {
@@ -49,8 +48,16 @@ public class OperationControllerAspect {
 			sps.deleteShelvesProduct(shelvesProduct);
 			String emailText = buildAcceptPriceText(sellerUser,buyerUser,ov, product);
 			String emailTextForSeller = buildAcceptPriceTextForSeller(sellerUser,buyerUser,ov, product);
-			eS.sendSimpleMessage(buyerUser.getUsername(), "Your price has been accepted!", emailText);
-			eS.sendSimpleMessage(sellerUser.getUsername(), "Contact him to finish the dael!", emailTextForSeller);
+//			eS.setSubject("Your price has been accepted!");
+//			eS.setText(emailText);
+//			eS.setTo(buyerUser.getUsername());
+//			eS.start();
+			
+			//sS.setSub
+			eip.sendEmailForEmail(buyerUser.getUsername(), "Your price has been accepted!", emailText);
+			eip.sendEmailForEmail(sellerUser.getUsername(), "Contact him to finish the dael!", emailTextForSeller);
+//			eS.sendSimpleMessage(buyerUser.getUsername(), "Your price has been accepted!", emailText);
+//			eS.sendSimpleMessage(sellerUser.getUsername(), "Contact him to finish the dael!", emailTextForSeller);
 		} else if (ov.getViewStatus() == 2) {
 			
 		}		
@@ -104,7 +111,8 @@ public class OperationControllerAspect {
 		operationView.setProductId(oh.getProductId());
 		operationView.setOperationDate(new Date());
 		ovs.addOperationView(operationView);
-		eS.sendSimpleMessage(sellUser.getUsername(), "Your product on iMorrun has buyer!", bText);
+//		eS.sendSimpleMessage(sellUser.getUsername(), "Your product on iMorrun has buyer!", bText);
+		eip.sendEmailForEmail(sellUser.getUsername(), "Your product on iMorrun has buyer!", bText);
 		
 	}
 	private String buildText(String fromName, String toName,  String title, int originalPrice, int nowPrice) {

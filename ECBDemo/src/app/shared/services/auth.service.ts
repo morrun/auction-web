@@ -30,6 +30,9 @@ export class AuthService {
   checkRole(): Observable<boolean> {
     return this.http.get<boolean>(`${this.AUTH_API_URL}/checkRole`, {withCredentials: true});
   }
+  checkOnlineNumber(): Observable<number> {
+    return this.http.get<number>(`${this.AUTH_API_URL}/checkOnlineNumber`, {withCredentials: true});
+  }
   login(user: User): Observable<{success: boolean, user: User}> {
     const httpParams: HttpParams = new HttpParams()
       .append('username', user.username)
@@ -52,7 +55,7 @@ export class AuthService {
     return throwError(`${error.error}`);
   }
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.AUTH_API_URL}/users`);
+    return this.http.get<User[]>(`${this.AUTH_API_URL}/users`,{withCredentials: true});
   }
   updateUserDetail(userDetails: UserDetail): Observable<{success: boolean}>{
     return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/userDetails`, userDetails);

@@ -9,6 +9,7 @@ import {AuctionProductsComponent} from './products/auction-products/auction-prod
 import {ProductsDetailComponent} from './products/products-detail/products-detail.component';
 import {SellProductsComponent} from './users/sell-products/sell-products.component';
 import {ViewMyProductComponent} from './users/view-my-product/view-my-product.component';
+import {AdminModule} from './admin/admin.module';
 
 
 const routes: Routes = [
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'user-info',
     loadChildren: '../app/users/user-info/user-info.module#UserInfoModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: '../app/admin/admin.module#AdminModule'
   },
   {
     path: 'product-detail/:id',

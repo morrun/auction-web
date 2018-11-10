@@ -34,7 +34,6 @@ public class ProductImageController {
 	}
 	@PostMapping("/productImage/{id}")
 	public Response addProductImages(@RequestParam("file") MultipartFile file,@PathVariable int id) {
-		System.out.println("I am Here********************************************************************");
 		String keyName = file.getOriginalFilename();
 		String[] arr = keyName.split("\\.");
 		String type = arr[arr.length-1];

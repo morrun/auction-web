@@ -28,5 +28,10 @@ public class AuthController {
 		}
 		return res;
 	}
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
+	@GetMapping("/checkOnlineNumber")
+	public int checkOnlineNumber(Authentication authentication) {
+		return authService.getActiveSessionNumber();
+	}
 
 }

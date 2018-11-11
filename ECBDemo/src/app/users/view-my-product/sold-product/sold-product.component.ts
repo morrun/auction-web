@@ -23,6 +23,7 @@ import {VisitHistoryService} from '../../../shared/services/Operation/visit-hist
 })
 export class SoldProductComponent implements OnInit {
   show = true;
+  empty = true;
   user: User;
   product: Product[];
   productImage: ProductImage[];
@@ -64,7 +65,11 @@ export class SoldProductComponent implements OnInit {
   loadProducts() {
     this.productService.getProductsByIdList(this.pid).subscribe( res => {
       this.product = res;
-      this.loadProductsImages();
+      if (this.product.length === 0 ) {
+        this.empty = false;
+      }else {
+        this.loadProductsImages();
+      }
     });
   }
   loadProductsImages() {

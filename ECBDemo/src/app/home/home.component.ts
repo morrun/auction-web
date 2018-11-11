@@ -8,25 +8,35 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   selectedIndex: number;
   transform: number;
+  i: number;
   constructor() {
     this.selectedIndex = 0;
     this.transform = 100;
   }
 
   sliderArray = [
-    {img: 'http://bloquo.cc/img/works/1.jpg', alt: '', text: '365 Days Of weddings a year'},
-    {img: 'http://bloquo.cc/img/works/2.jpg', alt: '',  text: '365 Days Of weddings a year'},
-    {img: 'http://bloquo.cc/img/works/3.jpg', alt: '', text: '365 Days Of weddings a year'},
-    {img: 'http://bloquo.cc/img/works/4.jpg', alt: '',  text: '365 Days Of weddings a year'},
-    {img: 'http://bloquo.cc/img/works/5.jpg', alt: '', text: '365 Days Of weddings a year'}
+    {img: 'http://bloquo.cc/img/works/5.jpg', alt: '', text: 'iMorrun e-commerce'},
+    {img: 'http://bloquo.cc/img/works/2.jpg', alt: '',  text: 'Help you sell'},
+    {img: 'http://bloquo.cc/img/works/3.jpg', alt: '', text: 'Your products'},
+    {img: 'http://bloquo.cc/img/works/4.jpg', alt: '',  text: 'With a negotiable price'},
+    {img: 'http://bloquo.cc/img/works/1.jpg', alt: '', text: 'And maximum benefit'}
   ];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.i = 0;
+    setInterval(() => {
+      this.selected(this.i);
+      this.i ++;
+      if (this.i === 5) {
+        this.i = 0;
+      }
+    },4000);
+  }
 
   selected(x) {
+    this.i = x;
     this.downSelected(x);
     this.selectedIndex = x;
-
   }
 
   keySelected(x) {

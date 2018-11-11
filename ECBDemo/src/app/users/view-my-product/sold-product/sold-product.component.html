@@ -1,4 +1,5 @@
 <div style="min-height: 600px">
+  <h2 *ngIf="!empty" style="color: lightgray;">This place is empty</h2>
   <ngb-accordion [closeOthers]="true" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let p of product" title="{{p.title}} price: {{p.price|currency:'USD'}}">
       <ng-template ngbPanelContent>

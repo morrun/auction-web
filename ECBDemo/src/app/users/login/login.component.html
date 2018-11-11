@@ -1,6 +1,6 @@
 <div style="min-height: 600px">
 <main class="container">
-  <mat-card fxFlex.gt-sm="60%" fxFlexOffset.gt-sm="20%">
+  <mat-card fxFlex.gt-sm="60%" fxFlexOffset.gt-sm="20%" style="margin: 50px 50px;">
     <mat-card-title>Login</mat-card-title>
     <form (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" fxLayout="column" #loginForm="ngForm" (input)="updateErr()">
       <mat-form-field>
@@ -21,7 +21,7 @@
         Your username and password does not match records.
       </mat-error>
       <div>
-        <button type="submit" mat-raised-button color="primary">Login</button>
+        <button type="submit" mat-raised-button color="primary"  style="background-color: cornflowerblue">Login</button>
         <a mat-button color="primary" (click)="onRegister()">Register</a>
       </div>
     </form>

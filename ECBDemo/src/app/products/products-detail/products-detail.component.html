@@ -7,7 +7,7 @@
       <div class="product-detail-image-container text-center">
         <mat-tab-group>
           <mat-tab  class="product-detail-image" *ngFor="let pitem of productImage" label="^">
-            <img [src]="pitem.image" style="height: 90%;width: 90%" >
+            <img [src]="pitem.image" style="height: 600px;width: 800px" >
           </mat-tab>
         </mat-tab-group>
       </div>
@@ -30,7 +30,7 @@
       </div>
       <div class="product-detail-info-cart-button-container" *ngIf="show; else auction;">
         <span>
-          <button class="btn-block btn-primary btn" [disabled]="!shelveProduct" (click)="negotiate()">Negotiate</button>
+          <button class="btn-block btn-primary btn" style="background-color: cornflowerblue" [disabled]="!shelveProduct" (click)="negotiate()">Negotiate</button>
         </span>
       </div>
       <ng-template #auction>
@@ -39,7 +39,7 @@
             Highest Price So Far: {{operationH[0].price | currency: 'USD'}}
           </div>
         <span>
-          <button class="btn-block btn-primary btn" [disabled]="!shelveProduct" (click)="bidding()">Bidding</button>
+          <button class="btn-block btn-primary btn" style="background-color: cornflowerblue" [disabled]="!shelveProduct" (click)="bidding()">Bidding</button>
         </span>
           <br/>
           <mat-accordion *ngIf="operationH[0]">

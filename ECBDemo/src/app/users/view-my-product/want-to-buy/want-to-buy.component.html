@@ -1,5 +1,6 @@
 <div style="min-height: 600px">
   <mat-list role="list">
+    <h2 *ngIf="!empty" style="color: lightgray;">This place is empty</h2>
     <mat-list-item role="listitem" *ngFor="let ov of operationView">
       <p>
         The price {{ov.nowPrice | currency: 'USD'}} you give to user {{ov.sellerUserId | userId: useD | emailTrans}} for his/her product with title

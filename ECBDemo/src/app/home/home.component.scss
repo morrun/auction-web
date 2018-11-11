@@ -1,6 +1,8 @@
 
 img {
-  max-width: 100%;
+  //max-width: 100%;
+  width: 1430px;
+  heigh: 600px
 }
 
 .container {
@@ -10,9 +12,10 @@ img {
 
 .img-container {
   position: absolute;
-  left: 0;
+  left: 3%;
+  right: 3%;
   opacity: 0;
-  height: auto !important;
+  height: 500px !important;
   background-size: cover;
   background-position: center;
   will-change: opacity;

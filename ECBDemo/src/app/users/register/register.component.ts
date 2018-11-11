@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register({ username, password, onlineStatus, activated, credits})
         .subscribe(res => {
           if (res.success) {
+            alert( 'Register succeed!');
             this.router.navigate(['/users/login']);
           } else {
             // show error text.

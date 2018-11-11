@@ -35,3 +35,21 @@
   background-color: green;
 }
 
+.show-img {
+  max-width: 400px;
+  max-height: 400px;
+  display: inline;
+  padding-left: 20px;
+  float: left;
+}
+
+.show-description {
+  margin-left: 10%;
+  width: 70%;
+  font-size: 1.5em;
+  padding: 50px;
+  float: right;
+}
+.show-deadline {
+  margin-left: 15%;
+}

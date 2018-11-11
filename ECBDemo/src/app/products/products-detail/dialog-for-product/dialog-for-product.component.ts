@@ -31,6 +31,7 @@ export class DialogForProductComponent implements OnInit {
     oh.operations.type = this.data.type;
     oh.operations.userId = this.data.userId;
     this.bob.addOperationService(oh).subscribe();
+    alert('The price you provide will be received by seller. Please wait for his/her response!');
     this.onNoClick();
   }
 

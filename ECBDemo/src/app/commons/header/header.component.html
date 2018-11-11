@@ -1,8 +1,8 @@
-<mat-toolbar color="primary">
+<mat-toolbar style="background-color: cornflowerblue">
   <span>
-    <a>iMORRUN e-commerce</a>
+    <a style="color: white;">iMORRUN e-commerce</a>
   </span>
-  <span>
+  <span style="color: white;">
     <a mat-button routerLink="/home">Home</a>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/products">Products</button>
@@ -24,7 +24,7 @@
     {{(authService.userSubject | async).username|usernamePipe}}
   </span>
   <ng-template #login>
-    <a mat-menu-item routerLink="/users/login">Login</a>
+    <a mat-menu-item routerLink="/users/login" style="color: white">Login</a>
   </ng-template>
   <ng-template *ngIf="(authService.userSubject | async)">
   </ng-template>

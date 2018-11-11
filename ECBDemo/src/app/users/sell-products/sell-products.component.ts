@@ -83,6 +83,7 @@ export class SellProductsComponent implements OnInit {
     }
     this.osps.addShelvesProduct(this.shelveProduct).subscribe();
     this.router.navigate(['/products']);
+    location.reload();
     this.selectedFiles = undefined;
   }
 onSubmit() {

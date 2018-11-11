@@ -19,7 +19,7 @@ import {AfterAcceptPriceComponent} from './after-accept-price/after-accept-price
 })
 export class WantToBuyComponent implements OnInit {
   show = true;
-
+  empty = true;
   user: User;
   product: Product[];
   operationView: OperationView[] = [];
@@ -55,6 +55,9 @@ export class WantToBuyComponent implements OnInit {
   loadProductView() {
     this.productService.getProductsByIdList(this.pid).subscribe( res => {
       this.product = res;
+      if (this.product.length === 0){
+        this.empty = false;
+      }
     });
   }
   loadUserDetailView() {

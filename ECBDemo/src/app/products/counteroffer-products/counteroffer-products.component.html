@@ -49,23 +49,24 @@
           </mat-expansion-panel-header>
 
           <!--<mat-form-field>-->
-          <mat-panel-description>
-            <img src="" alt="" style="width: 30%;height:150px">
-            <p style="display: inline-block">Description: {{product.description}}</p>
-
+          <mat-panel-description class="show-img">
+            <mat-tab-group>
+              <mat-tab  class="mat-tab-label" *ngFor="let pitem of product.id | productImage: productImage" label="^">
+                <img [src]="pitem.image" style="max-width: 370px;max-height:370px">
+              </mat-tab>
+            </mat-tab-group>
           </mat-panel-description>
-          <mat-panel-description style="width: 40%;text-align: left">
+
+          <mat-panel-description>
+            <p class="show-description">Description: {{product.description}}</p>
 
           </mat-panel-description>
           <!--<input matInput placeholder="First name">-->
           <!--</mat-form-field>-->
-          <mat-panel-description>
-            <button mat-raised-button color="primary">Primary</button>
-            <p map-raised-button style="float: right"> Deadline: {{product.deadline}}</p>
+          <mat-panel-description style="float: bottom">
+            <p class="show-deadline"> Deadline: {{product.deadline}}</p>
+            <a mat-raised-button color="primary" [routerLink] = "['/product-detail',product.id]"  style="background-color: cornflowerblue; margin-left: 20%;float: right">View Details</a>
           </mat-panel-description>
-          <!--<mat-form-field>-->
-          <!--<input matInput placeholder="Age">-->
-          <!--</mat-form-field>-->
         </mat-expansion-panel>
       </mat-accordion>
       <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)" showFirstLastButtons>

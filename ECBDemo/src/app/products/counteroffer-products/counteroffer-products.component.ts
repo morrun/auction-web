@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {OnShelvesService} from '../../shared/services/Shelves/on-shelves.service';
 import {ProductType} from '../../shared/models/product-type';
@@ -6,11 +6,14 @@ import {ProductService} from '../../shared/services/product/product.service';
 import {ShelvesProduct} from '../../shared/models/shelves-product';
 import {Product} from '../../shared/models/product';
 import {ProductTypeService} from '../../shared/services/product/product-type.service';
+import {ProductImage} from '../../shared/models/product-image';
+import {ProductImageService} from '../../shared/services/product/product-image.service';
 
 @Component({
   selector: 'app-counteroffer-products',
   templateUrl: './counteroffer-products.component.html',
-  styleUrls: ['./counteroffer-products.component.scss']
+  styleUrls: ['./counteroffer-products.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CounterofferProductsComponent implements OnInit {
   // The properites belwo is used for filter
@@ -23,6 +26,7 @@ export class CounterofferProductsComponent implements OnInit {
   showProducts: Product[];
   shelvesP: ShelvesProduct[];
 
+  productImage: ProductImage[];
   productTypes: ProductType[];
 
 
@@ -36,7 +40,8 @@ export class CounterofferProductsComponent implements OnInit {
   constructor(
     private ps: ProductService,
     private pts: ProductTypeService,
-    private oss: OnShelvesService
+    private oss: OnShelvesService,
+    private pis: ProductImageService
   ) { }
 
   ngOnInit() {
@@ -46,6 +51,9 @@ export class CounterofferProductsComponent implements OnInit {
     //     this.length = res.length;
     //     this.activePageDataChunk = this.products.slice(0, this.pageSize);
     //   });
+    this.pis.getAllImage().subscribe( res => {
+      this.productImage = res;
+    });
     this.pts.getAllProductTypes()
       .subscribe( res => {
         this.productTypes = res;

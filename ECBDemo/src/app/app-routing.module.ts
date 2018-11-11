@@ -63,7 +63,7 @@ const routes: Routes = [
     component: ViewMyProductComponent
   },
   {
-    path: '',
+    path: '**',
     redirectTo: 'home',
     pathMatch: 'full'
   }

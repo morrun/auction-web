@@ -11,4 +11,5 @@ public interface ShelvesProductService {
 	public ShelvesProduct getShelvesProductById(int id);
 	public List<ShelvesProduct> getShelvesProductByUserId(int userId);
 	public Response deleteShelvesProduct(ShelvesProduct p);
+	long getRemainTime(int productId);
 }

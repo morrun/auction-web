@@ -11,4 +11,5 @@ public interface OperationViewDao extends JpaRepository<OperationView, Integer> 
 	List<OperationView> findByBuyerUserId(int buyerUserId);
 	OperationView findByBuyerUserIdAndProductId(int buyerUserId, int productId);
 	void deleteByProductId(int productId);
+	List<OperationView> findByProductId(int productId);
 }

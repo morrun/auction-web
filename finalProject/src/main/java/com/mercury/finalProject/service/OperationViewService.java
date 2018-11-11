@@ -11,4 +11,6 @@ public interface OperationViewService {
 	Response addOperationView(OperationView ov);
 	Response updateOperationView(OperationView ov);
 	Response deleteByProductId(int productId);
+	List<OperationView> getByProductId(int productId);
+
 }

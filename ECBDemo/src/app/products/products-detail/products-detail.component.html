@@ -25,8 +25,8 @@
       <div class="product-detail-info-brand">
         Description: {{product.description}}
       </div>
-      <div class="product-detail-info-brand">
-        Selling Deadline: {{product.deadline}}
+      <div class="product-detail-info-brand" style="color: red">
+        Remain Time:  {{day}} days, {{hours}} hours, {{minutes}} minutes.
       </div>
       <div class="product-detail-info-cart-button-container" *ngIf="show; else auction;">
         <span>

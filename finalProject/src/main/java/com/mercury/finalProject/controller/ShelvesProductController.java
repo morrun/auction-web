@@ -37,4 +37,8 @@ public class ShelvesProductController {
 	public List<ShelvesProduct> getShelvesProductsByUserId(@PathVariable(name = "id") int userId) {
 		return sps.getShelvesProductByUserId(userId);
 	}
+	@GetMapping("/shelvesProducts/remainTime/{id}")
+	public long getReamainTime(@PathVariable(name="id") int productId) {
+		return sps.getRemainTime(productId);
+	}
 }

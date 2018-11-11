@@ -44,7 +44,6 @@ export class SellProductsComponent implements OnInit {
       productTypeId: ['', [ Validators.required]],
       price: ['', [ Validators.required]],
       type: ['SELL',[Validators.required]],
-      deadline: ''
     });
   }
 
@@ -93,7 +92,7 @@ onSubmit() {
   }
   if( this.nestedReactiveForm.valid) {
     const product = new Product();
-    const { title, description, productTypeId, price, type, deadline } = this.nestedReactiveForm.value;
+    const { title, description, productTypeId, price, type } = this.nestedReactiveForm.value;
     product.title = title;
     product.description = description;
     product.productTypeId = productTypeId;
@@ -101,7 +100,7 @@ onSubmit() {
     this.shelveProduct.shelves.type = type;
     // console.log(deadline.getFullYear() + '-' + deadline.getMonth() + '-' + deadline.getDate());
     // formatDate(deadline, 'yyyy/mm/dd',  '');
-    product.deadline = deadline.getFullYear() + '/' + deadline.getMonth() + '/' + deadline.getDate();
+    // product.deadline = deadline.getFullYear() + '/' + deadline.getMonth() + '/' + deadline.getDate();
     // product.deadline = time;
     if (this.selectedFiles){
       this.ps.addProduct( product).subscribe( res => {

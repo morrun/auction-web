@@ -37,8 +37,7 @@ export class ModifyMyProductComponent implements OnInit {
       title: ['', [ Validators.maxLength(100)]],
       description: ['', [ Validators.maxLength(500)]],
       productTypeId: '',
-      price: '',
-      deadline: ''
+      price: ''
     });
 }
 
@@ -72,8 +71,8 @@ export class ModifyMyProductComponent implements OnInit {
       this.data.product.description = description;
       this.data.product.productTypeId = productTypeId;
       this.data.product.price = price;
-      if (deadline)
-      this.data.product.deadline = deadline.getFullYear() + '/' + deadline.getMonth() + '/' + deadline.getDate();
+      // if (deadline)
+      // this.data.product.deadline = deadline.getFullYear() + '/' + deadline.getMonth() + '/' + deadline.getDate();
       this.productService.updateProduct(this.data.product.id, this.data.product).subscribe( res => {
         if (!this.selectedFiles){
           this.onNoClick();

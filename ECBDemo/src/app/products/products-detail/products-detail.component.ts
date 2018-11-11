@@ -23,6 +23,9 @@ import {ShelvesProduct} from '../../shared/models/shelves-product';
   styleUrls: ['./products-detail.component.scss']
 })
 export class ProductsDetailComponent implements OnInit, OnDestroy {
+  day: number;
+  hours: number;
+  minutes: number;
   product: Product;
   productImage: ProductImage[];
   show: boolean;
@@ -72,6 +75,14 @@ export class ProductsDetailComponent implements OnInit, OnDestroy {
         if (this.shelveProduct && this.shelveProduct.shelves.type === 'SELL'){
           this.show = true;
         }
+      });
+    this.oss.getRemainTimeByProductId(this.id)
+      .subscribe( res => {
+        this.day = Math.floor(res / 24 / 60);
+        res = res % (24 * 60);
+        this.hours =Math.floor( res / 60);
+        res = res % 60;
+        this.minutes = res;
       });
 
   }

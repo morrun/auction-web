@@ -3,6 +3,8 @@ package com.mercury.finalProject.serviceImpl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,12 @@ import com.mercury.finalProject.bean.Product;
 import com.mercury.finalProject.dao.ProductDao;
 import com.mercury.finalProject.http.Response;
 import com.mercury.finalProject.service.ProductService;
+import com.mercury.finalProject.serviceHelper.ProductHelper;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-
+	@Autowired
+	private ProductHelper ph;
 	@Autowired
 	private ProductDao productDao;
 	@Override
@@ -25,11 +29,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProductsById(List<Integer> ids) {
 		List<Product> lp = productDao.findByIdIn(ids);
-		List<Product> res = new ArrayList();
+		List<Product> res = new ArrayList<Product>();
 		for (Integer i: ids) {
 			for (Product p: lp) {
 				if (p.getId() == i) {
-					res.add(p);
+					res.add(p);									
 					break;
 				}
 			}
@@ -38,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	@Override
 	public Response addProduct(Product p) {
-		// TODO Auto-generated method stub
+		
 		productDao.save(p);
 		return new Response(true);
 	}
@@ -53,16 +57,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 	@Override
 	public int addProductAndGetId(Product p) {
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
-//		String deadline = p.getDeadline().getYear() + "/"+p.getDeadline().getMonth() + "/" + p.getDeadline().getDate();
-//		try {
-//			p.setDeadline(sdf.parse(deadline));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, 12);
+		p.setDeadline(c.getTime());
 		productDao.save(p);
-		
 		return productDao.findByTitleAndDescription(p.getTitle(), p.getDescription()).getId();
 	}
 	@Override

@@ -24,4 +24,7 @@ export class OnShelvesService {
   getShelvesByUserId(id: number): Observable<ShelvesProduct[]> {
     return this.http.get<ShelvesProduct[]>(`${this.AUTH_API_URL}/shelvesProducts/user/${id}`);
   }
+  getRemainTimeByProductId(id: number): Observable<number> {
+    return this.http.get<number>(`${this.AUTH_API_URL}/shelvesProducts/remainTime/${id}`);
+  }
 }

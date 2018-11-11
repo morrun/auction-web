@@ -12,17 +12,30 @@ import java.util.TreeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.mercury.finalProject.bean.OperationView;
 import com.mercury.finalProject.bean.ShelvesProduct;
 import com.mercury.finalProject.bean.VisitHistory;
+import com.mercury.finalProject.dao.ShelvesProductDao;
 import com.mercury.finalProject.dao.VisitHistoryDao;
+import com.mercury.finalProject.service.OperationViewService;
+import com.mercury.finalProject.service.OperationsHistoryService;
 
 @Component
 @Scope("prototype")
+@Transactional
 public class ProductHelper {
 	@Autowired
 	private VisitHistoryDao vhd;
+	@Autowired
+	private OperationViewService ovs;
 	
+	@Autowired
+	private OperationsHistoryService ohs;
+	
+	@Autowired
+	private ShelvesProductDao spd;
 	public List<ShelvesProduct> visitHistoryAndShelvesSort(List<ShelvesProduct> spl) { 
 		if (spl == null) return null;
 		List<VisitHistory> vhls = vhd.findAll();
@@ -52,5 +65,20 @@ public class ProductHelper {
 		});
 		result.addAll(spl);
 		return result;
+	}
+	
+	public void dealOverDeadlineProduct(int id) {
+		List<OperationView> ovList = ovs.getByProductId(id);
+		if (!ovList.isEmpty()) {
+			Collections.sort(ovList, (o1,o2) -> {
+				return o2.getNowPrice() - o1.getNowPrice();
+			});
+			OperationView temO = ovList.get(0);
+			temO.setViewStatus(1);
+			ovs.updateOperationView(temO);
+		} else {
+			spd.deleteByProductId(id);
+		}		
+		ohs.deleteByProductId(id);
 	}
 }

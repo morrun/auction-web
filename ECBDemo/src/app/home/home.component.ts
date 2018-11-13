@@ -16,9 +16,9 @@ export class HomeComponent implements OnInit {
 
   sliderArray = [
     {img: 'http://bloquo.cc/img/works/5.jpg', alt: '', text: 'iMorrun e-commerce'},
-    {img: 'http://bloquo.cc/img/works/2.jpg', alt: '',  text: 'Help you sell'},
+    {img: 'http://bloquo.cc/img/works/2.jpg', alt: '',  text: 'Can help you sell'},
     {img: 'http://bloquo.cc/img/works/3.jpg', alt: '', text: 'Your products'},
-    {img: 'http://bloquo.cc/img/works/4.jpg', alt: '',  text: 'With a negotiable price'},
+    {img: 'http://bloquo.cc/img/works/4.jpg', alt: '',  text: 'With a appealing price'},
     {img: 'http://bloquo.cc/img/works/1.jpg', alt: '', text: 'And maximum benefit'}
   ];
 

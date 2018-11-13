@@ -95,6 +95,7 @@ export class SoldProductComponent implements OnInit {
         shelvesProduct.shelves.type = dialogReload.type;
         this.onShelveService.addShelvesProduct(shelvesProduct).subscribe();
         this.operationViewService.deleteOperationViewByProductId(shelvesProduct.productId).subscribe();
+        alert('Your product is on shelves now');
       }
     });
   }

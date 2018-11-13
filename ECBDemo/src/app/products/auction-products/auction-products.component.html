@@ -7,7 +7,7 @@
           <mat-card-subtitle>Types: </mat-card-subtitle>
           <mat-form-field>
             <mat-select placeholder="Products Type" [(ngModel)]="selectedValue">
-              <mat-option [value]="All" (click)="showAll()">All</mat-option>
+              <mat-option value="All" (click)="showAll()">All</mat-option>
               <mat-option *ngFor="let pt of productTypes" [value]="pt.type" (click)="changeView()">
                 {{pt.type}}
               </mat-option>

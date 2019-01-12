@@ -1,5 +1,11 @@
 /.metadata/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+activeMQ.jpg
+keyvalue.txt
+plan.docx
+Project.pptx
+.recommenders/*
+.metadata/*
 
 # compiled output
 /dist

@@ -22,7 +22,7 @@ public class EmailServiceApplication {
     @Value("${jms.password}")
     private String jmsPassword;
     
-    @Bean
+//    @Bean
     public ConnectionFactory connectionFactory(){
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
         connectionFactory.setBrokerURL(jmsBrokerUrl);
